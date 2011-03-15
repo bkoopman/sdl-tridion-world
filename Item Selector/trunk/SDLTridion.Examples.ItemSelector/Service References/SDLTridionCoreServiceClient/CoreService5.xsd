@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.sdltridion.com/ContentManager/CoreService/2010" elementFormDefault="qualified" targetNamespace="http://www.sdltridion.com/ContentManager/CoreService/2010" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd1" namespace="http://www.sdltridion.com/ContentManager/R6" />
+  <xs:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd5" namespace="http://www.sdltridion.com/Security" />
+  <xs:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+  <xs:element name="StartActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityInstanceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReadOptions">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="LoadFlags" type="q1:LoadFlags" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReadOptions" nillable="true" type="tns:ReadOptions" />
+  <xs:element name="StartActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="StartActivityResult" nillable="true" type="q2:ActivityInstanceData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuspendActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityInstanceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuspendActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="SuspendActivityResult" nillable="true" type="q3:ActivityInstanceData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RestartActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityInstanceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RestartActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="RestartActivityResult" nillable="true" type="q4:ActivityInstanceData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReAssignActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityInstanceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newAssigneeId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReAssignActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ReAssignActivityResult" nillable="true" type="q5:ActivityInstanceData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FinishActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityInstanceId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="activityFinishData" nillable="true" type="q6:ActivityFinishData" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FinishActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="FinishActivityResult" nillable="true" type="q7:ActivityInstanceData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ForceFinishProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="processInstanceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="approvalStatusId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ForceFinishProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ForceFinishProcessResult" nillable="true" type="q8:ProcessHistoryData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApiVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApiVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetApiVersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentUser">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q9:UserData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsExistingObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsExistingObjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsExistingObjectResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTcmUri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="baseUri" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="contextRepositoryUri" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTcmUriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="GetTcmUriResult" nillable="true" type="q10:TcmUri" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Read">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ReadResult" nillable="true" type="q11:IdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadSchemaFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schemaId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="expandEmbeddedFields" type="xs:boolean" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadSchemaFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ReadSchemaFieldsResult" nillable="true" type="q12:SchemaFieldsData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvertSchemaFieldsToXsd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="schemaFieldsData" nillable="true" type="q13:SchemaFieldsData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvertSchemaFieldsToXsdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConvertSchemaFieldsToXsdResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="deltaData" nillable="true" type="q14:IdentifiableObjectData" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="SaveResult" nillable="true" type="q15:IdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTaxonomyNode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q16="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="deleteTaxonomyNodeMode" type="q16:DeleteTaxonomyNodeMode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTaxonomyNodeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="itemType" type="q17:ItemType" />
+        <xs:element minOccurs="0" name="containerId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="GetDefaultDataResult" nillable="true" type="q18:IdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Move">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="MoveResult" nillable="true" type="q19:RepositoryLocalObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Copy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="makeUnique" type="xs:boolean" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="CopyResult" nillable="true" type="q20:RepositoryLocalObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckOut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="permanentLock" type="xs:boolean" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckOutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="CheckOutResult" nillable="true" type="q21:VersionedItemData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckIn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckInResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="CheckInResult" nillable="true" type="q22:VersionedItemData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="deltaData" nillable="true" type="q23:IdentifiableObjectData" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="UpdateResult" nillable="true" type="q24:IdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Create">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="data" nillable="true" type="q25:IdentifiableObjectData" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="CreateResult" nillable="true" type="q26:IdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UndoCheckOut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="permanentLock" type="xs:boolean" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UndoCheckOutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="UndoCheckOutResult" nillable="true" type="q27:VersionedItemData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rollback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="id" nillable="true" type="q28:TcmUri" />
+        <xs:element minOccurs="0" name="deleteVersions" type="xs:boolean" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RollbackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="RollbackResult" nillable="true" type="q29:VersionedItemData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Localize">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LocalizeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="LocalizeResult" nillable="true" type="q30:RepositoryLocalObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnLocalize">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readBackOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnLocalizeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="UnLocalizeResult" nillable="true" type="q31:RepositoryLocalObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemWideListXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="filter" nillable="true" type="q32:SystemWideListFilterData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemWideListXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSystemWideListXmlResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemWideList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="filter" nillable="true" type="q33:SystemWideListFilterData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemWideListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="GetSystemWideListResult" nillable="true" type="q34:ArrayOfIdentifiableObjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q35="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="filter" nillable="true" type="q35:SubjectRelatedListFilterData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetListXmlResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceNames">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetListDirectoryServiceNamesResult" nillable="true" type="q36:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListWindowsDomainUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="domainName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListWindowsDomainUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://www.sdltridion.com/Security" minOccurs="0" name="GetListWindowsDomainUsersResult" nillable="true" type="q37:ArrayOfWindowsUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="directoryServiceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://www.sdltridion.com/Security" minOccurs="0" name="GetListDirectoryServiceUsersResult" nillable="true" type="q38:ArrayOfDirectoryServiceUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceGroupMembers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="directoryServiceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="groupDN" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceGroupMembersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://www.sdltridion.com/Security" minOccurs="0" name="GetListDirectoryServiceGroupMembersResult" nillable="true" type="q39:ArrayOfDirectoryServiceUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceSubtreeUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="directoryServiceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subtreeDN" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListDirectoryServiceSubtreeUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://www.sdltridion.com/Security" minOccurs="0" name="GetListDirectoryServiceSubtreeUsersResult" nillable="true" type="q40:ArrayOfDirectoryServiceUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Classify">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywordIds" nillable="true" type="q41:ArrayOfstring" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClassifyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ClassifyResult" nillable="true" type="q42:ArrayOfClassificationDetailData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnClassify">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywordIds" nillable="true" type="q43:ArrayOfstring" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnClassifyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="UnClassifyResult" nillable="true" type="q44:ArrayOfClassificationDetailData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReClassify">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywordIdsToRemove" nillable="true" type="q45:ArrayOfstring" />
+        <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywordIdsToAdd" nillable="true" type="q46:ArrayOfstring" />
+        <xs:element minOccurs="0" name="readOptions" nillable="true" type="tns:ReadOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReClassifyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ReClassifyResult" nillable="true" type="q47:ArrayOfClassificationDetailData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadBinaryContent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadBinaryContentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.microsoft.com/Message" name="DownloadBinaryContentResult" type="q48:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.microsoft.com/Message" name="UploadContent" type="q49:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileName" nillable="true" type="xs:string" />
+  <xs:element name="UploadResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilePath" nillable="true" type="xs:string" />
+  <xs:element name="Impersonate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImpersonateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://www.sdltridion.com/ContentManager/R6" minOccurs="0" name="ImpersonateResult" nillable="true" type="q50:UserData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TerminateSession">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TerminateSessionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionId">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSessionIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

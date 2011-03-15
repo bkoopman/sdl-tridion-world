@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://www.sdltridion.com/ContentManager/CoreService/2010" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="http://www.sdltridion.com/ContentManager/CoreService/2010" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.sdltridion.com/ContentManager/CoreService/2010/Imports">
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd4" namespace="http://www.sdltridion.com/ContentManager/CoreService/2010" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd1" namespace="http://www.sdltridion.com/ContentManager/R6" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tridion.ContentManager.Publishing" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd5" namespace="http://www.sdltridion.com/Security" />
+      <xsd:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICoreService2010_StartActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartActivity" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_StartActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_StartActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q1:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_SuspendActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SuspendActivity" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_SuspendActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SuspendActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_SuspendActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q2:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_RestartActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:RestartActivity" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_RestartActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RestartActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_RestartActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q3:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReAssignActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReAssignActivity" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReAssignActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReAssignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReAssignActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q4:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_FinishActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:FinishActivity" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_FinishActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FinishActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_FinishActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q5:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ForceFinishProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:ForceFinishProcess" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ForceFinishProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ForceFinishProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ForceFinishProcess_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q6:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetApiVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiVersion" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetApiVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetApiVersion_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q7:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetCurrentUser_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q8:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_IsExistingObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsExistingObject" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_IsExistingObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsExistingObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_IsExistingObject_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q9:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetTcmUri_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTcmUri" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetTcmUri_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTcmUriResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetTcmUri_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q10:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Read_InputMessage">
+    <wsdl:part name="parameters" element="tns:Read" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Read_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Read_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q11:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReadSchemaFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSchemaFields" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReadSchemaFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSchemaFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReadSchemaFields_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q12:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ConvertSchemaFieldsToXsd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConvertSchemaFieldsToXsd" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ConvertSchemaFieldsToXsd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConvertSchemaFieldsToXsdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ConvertSchemaFieldsToXsd_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q13:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Save_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q14:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Delete_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q15:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_DeleteTaxonomyNode_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaxonomyNode" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_DeleteTaxonomyNode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaxonomyNodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_DeleteTaxonomyNode_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q16:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetDefaultData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultData" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetDefaultData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetDefaultData_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q17:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Move_InputMessage">
+    <wsdl:part name="parameters" element="tns:Move" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Move_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Move_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q18:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Copy_InputMessage">
+    <wsdl:part name="parameters" element="tns:Copy" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Copy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Copy_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q19:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOut" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckOut_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q20:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIn" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_CheckIn_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q21:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Update_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q22:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Create_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q23:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UndoCheckOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:UndoCheckOut" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UndoCheckOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UndoCheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UndoCheckOut_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q24:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Rollback_InputMessage">
+    <wsdl:part name="parameters" element="tns:Rollback" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Rollback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RollbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Rollback_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q25:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Localize_InputMessage">
+    <wsdl:part name="parameters" element="tns:Localize" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Localize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LocalizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Localize_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q26:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnLocalize_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnLocalize" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnLocalize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnLocalizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnLocalize_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q27:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemWideListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemWideListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideListXml_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q28:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemWideList" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemWideListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetSystemWideList_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q29:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListXml_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q30:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceNames" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceNames_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q31:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListWindowsDomainUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListWindowsDomainUsers" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListWindowsDomainUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListWindowsDomainUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListWindowsDomainUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q32:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceUsers" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q33:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceGroupMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceGroupMembers" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceGroupMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceGroupMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceGroupMembers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q34:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceSubtreeUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceSubtreeUsers" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceSubtreeUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListDirectoryServiceSubtreeUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_GetListDirectoryServiceSubtreeUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q35:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Classify_InputMessage">
+    <wsdl:part name="parameters" element="tns:Classify" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Classify_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_Classify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q36="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q36:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnClassify_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnClassify" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnClassify_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnClassifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_UnClassify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q37="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q37:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReClassify_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReClassify" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReClassify_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReClassifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoreService2010_ReClassify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q38:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IStreamDownload2010_DownloadBinaryContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadBinaryContent" />
+  </wsdl:message>
+  <wsdl:message name="IStreamDownload2010_DownloadBinaryContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadBinaryContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStreamDownload2010_DownloadBinaryContent_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q39="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q39:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="UploadRequest">
+    <wsdl:part name="parameters" element="tns:UploadRequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadRequest_Headers">
+    <wsdl:part name="FileName" element="tns:FileName" />
+  </wsdl:message>
+  <wsdl:message name="UploadResponse">
+    <wsdl:part name="parameters" element="tns:UploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadResponse_Headers">
+    <wsdl:part name="FilePath" element="tns:FilePath" />
+  </wsdl:message>
+  <wsdl:message name="IStreamUpload2010_UploadBinaryContent_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q40="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q40:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_StartActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q41:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_SuspendActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q42="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q42:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_RestartActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q43="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q43:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_ReAssignActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q44:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_FinishActivity_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q45="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q45:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_ForceFinishProcess_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q46="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q46:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetApiVersion_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q47="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q47:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetCurrentUser_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q48="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q48:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_IsExistingObject_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q49="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q49:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetTcmUri_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q50="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q50:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Read_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q51="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q51:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_ReadSchemaFields_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q52="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q52:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_ConvertSchemaFieldsToXsd_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q53="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q53:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Save_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q54="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q54:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Delete_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q55="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q55:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_DeleteTaxonomyNode_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q56="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q56:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetDefaultData_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q57:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Move_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q58="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q58:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Copy_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q59="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q59:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_CheckOut_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q60="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q60:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_CheckIn_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q61="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q61:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Update_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q62="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q62:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Create_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q63="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q63:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_UndoCheckOut_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q64:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Rollback_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q65="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q65:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Localize_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q66="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q66:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_UnLocalize_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q67="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q67:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetSystemWideListXml_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q68="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q68:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetSystemWideList_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q69="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q69:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListXml_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q70="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q70:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListDirectoryServiceNames_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q71="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q71:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListWindowsDomainUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q72="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q72:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListDirectoryServiceUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q73="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q73:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListDirectoryServiceGroupMembers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q74="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q74:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetListDirectoryServiceSubtreeUsers_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q75="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q75:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Classify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q76="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q76:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_UnClassify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q77="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q77:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_ReClassify_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q78="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q78:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Impersonate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Impersonate" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Impersonate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImpersonateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_Impersonate_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q79="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q79:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_TerminateSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateSession" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_TerminateSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_TerminateSession_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q80="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q80:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetSessionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionId" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetSessionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionAwareCoreService2010_GetSessionId_CoreServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q81="http://www.sdltridion.com/ContentManager/R6" name="detail" element="q81:CoreServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="ICoreService2010">
+    <wsdl:operation name="StartActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivity" message="tns:ICoreService2010_StartActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivityResponse" message="tns:ICoreService2010_StartActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_StartActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuspendActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivity" message="tns:ICoreService2010_SuspendActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivityResponse" message="tns:ICoreService2010_SuspendActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_SuspendActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RestartActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivity" message="tns:ICoreService2010_RestartActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivityResponse" message="tns:ICoreService2010_RestartActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_RestartActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReAssignActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivity" message="tns:ICoreService2010_ReAssignActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivityResponse" message="tns:ICoreService2010_ReAssignActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_ReAssignActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivity" message="tns:ICoreService2010_FinishActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivityResponse" message="tns:ICoreService2010_FinishActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_FinishActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ForceFinishProcess">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcess" message="tns:ICoreService2010_ForceFinishProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcessResponse" message="tns:ICoreService2010_ForceFinishProcess_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcessCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_ForceFinishProcess_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApiVersion">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersion" message="tns:ICoreService2010_GetApiVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersionResponse" message="tns:ICoreService2010_GetApiVersion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersionCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetApiVersion_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUser">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUser" message="tns:ICoreService2010_GetCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUserResponse" message="tns:ICoreService2010_GetCurrentUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUserCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetCurrentUser_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistingObject">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObject" message="tns:ICoreService2010_IsExistingObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObjectResponse" message="tns:ICoreService2010_IsExistingObject_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObjectCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_IsExistingObject_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTcmUri">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUri" message="tns:ICoreService2010_GetTcmUri_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUriResponse" message="tns:ICoreService2010_GetTcmUri_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUriCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetTcmUri_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Read">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Read" message="tns:ICoreService2010_Read_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadResponse" message="tns:ICoreService2010_Read_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Read_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSchemaFields">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFields" message="tns:ICoreService2010_ReadSchemaFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFieldsResponse" message="tns:ICoreService2010_ReadSchemaFields_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFieldsCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_ReadSchemaFields_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertSchemaFieldsToXsd">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsd" message="tns:ICoreService2010_ConvertSchemaFieldsToXsd_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsdResponse" message="tns:ICoreService2010_ConvertSchemaFieldsToXsd_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsdCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_ConvertSchemaFieldsToXsd_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Save" message="tns:ICoreService2010_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SaveResponse" message="tns:ICoreService2010_Save_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SaveCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Save_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Delete" message="tns:ICoreService2010_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteResponse" message="tns:ICoreService2010_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Delete_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTaxonomyNode">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNode" message="tns:ICoreService2010_DeleteTaxonomyNode_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNodeResponse" message="tns:ICoreService2010_DeleteTaxonomyNode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNodeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_DeleteTaxonomyNode_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultData">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultData" message="tns:ICoreService2010_GetDefaultData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultDataResponse" message="tns:ICoreService2010_GetDefaultData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultDataCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetDefaultData_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Move">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Move" message="tns:ICoreService2010_Move_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/MoveResponse" message="tns:ICoreService2010_Move_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/MoveCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Move_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Copy">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Copy" message="tns:ICoreService2010_Copy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CopyResponse" message="tns:ICoreService2010_Copy_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CopyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Copy_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOut" message="tns:ICoreService2010_CheckOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOutResponse" message="tns:ICoreService2010_CheckOut_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOutCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_CheckOut_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIn">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckIn" message="tns:ICoreService2010_CheckIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckInResponse" message="tns:ICoreService2010_CheckIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckInCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_CheckIn_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Update" message="tns:ICoreService2010_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UpdateResponse" message="tns:ICoreService2010_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UpdateCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Update_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Create" message="tns:ICoreService2010_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CreateResponse" message="tns:ICoreService2010_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CreateCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Create_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UndoCheckOut">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOut" message="tns:ICoreService2010_UndoCheckOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOutResponse" message="tns:ICoreService2010_UndoCheckOut_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOutCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_UndoCheckOut_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Rollback">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Rollback" message="tns:ICoreService2010_Rollback_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RollbackResponse" message="tns:ICoreService2010_Rollback_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RollbackCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Rollback_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Localize">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Localize" message="tns:ICoreService2010_Localize_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/LocalizeResponse" message="tns:ICoreService2010_Localize_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/LocalizeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Localize_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnLocalize">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalize" message="tns:ICoreService2010_UnLocalize_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalizeResponse" message="tns:ICoreService2010_UnLocalize_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalizeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_UnLocalize_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemWideListXml">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXml" message="tns:ICoreService2010_GetSystemWideListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXmlResponse" message="tns:ICoreService2010_GetSystemWideListXml_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXmlCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetSystemWideListXml_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemWideList">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideList" message="tns:ICoreService2010_GetSystemWideList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListResponse" message="tns:ICoreService2010_GetSystemWideList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetSystemWideList_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListXml">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXml" message="tns:ICoreService2010_GetListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXmlResponse" message="tns:ICoreService2010_GetListXml_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXmlCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListXml_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListDirectoryServiceNames">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNames" message="tns:ICoreService2010_GetListDirectoryServiceNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNamesResponse" message="tns:ICoreService2010_GetListDirectoryServiceNames_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNamesCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListDirectoryServiceNames_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListWindowsDomainUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsers" message="tns:ICoreService2010_GetListWindowsDomainUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsersResponse" message="tns:ICoreService2010_GetListWindowsDomainUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListWindowsDomainUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListDirectoryServiceUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsers" message="tns:ICoreService2010_GetListDirectoryServiceUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsersResponse" message="tns:ICoreService2010_GetListDirectoryServiceUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListDirectoryServiceUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListDirectoryServiceGroupMembers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembers" message="tns:ICoreService2010_GetListDirectoryServiceGroupMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembersResponse" message="tns:ICoreService2010_GetListDirectoryServiceGroupMembers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListDirectoryServiceGroupMembers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListDirectoryServiceSubtreeUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsers" message="tns:ICoreService2010_GetListDirectoryServiceSubtreeUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsersResponse" message="tns:ICoreService2010_GetListDirectoryServiceSubtreeUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_GetListDirectoryServiceSubtreeUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Classify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Classify" message="tns:ICoreService2010_Classify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ClassifyResponse" message="tns:ICoreService2010_Classify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_Classify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnClassify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassify" message="tns:ICoreService2010_UnClassify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassifyResponse" message="tns:ICoreService2010_UnClassify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_UnClassify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReClassify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassify" message="tns:ICoreService2010_ReClassify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassifyResponse" message="tns:ICoreService2010_ReClassify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ICoreService2010_ReClassify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="false" name="IStreamDownload2010">
+    <wsdl:operation name="DownloadBinaryContent">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamDownload2010/DownloadBinaryContent" message="tns:IStreamDownload2010_DownloadBinaryContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamDownload2010/DownloadBinaryContentResponse" message="tns:IStreamDownload2010_DownloadBinaryContent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamDownload2010/DownloadBinaryContentCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:IStreamDownload2010_DownloadBinaryContent_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="false" name="IStreamUpload2010">
+    <wsdl:operation name="UploadBinaryContent">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamUpload2010/UploadBinaryContent" name="UploadRequest" message="tns:UploadRequest" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamUpload2010/UploadBinaryContentResponse" name="UploadResponse" message="tns:UploadResponse" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/IStreamUpload2010/UploadBinaryContentCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:IStreamUpload2010_UploadBinaryContent_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="true" name="ISessionAwareCoreService2010">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="StartActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivity" message="tns:ICoreService2010_StartActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivityResponse" message="tns:ICoreService2010_StartActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/StartActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_StartActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SuspendActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivity" message="tns:ICoreService2010_SuspendActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivityResponse" message="tns:ICoreService2010_SuspendActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SuspendActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_SuspendActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RestartActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivity" message="tns:ICoreService2010_RestartActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivityResponse" message="tns:ICoreService2010_RestartActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RestartActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_RestartActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ReAssignActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivity" message="tns:ICoreService2010_ReAssignActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivityResponse" message="tns:ICoreService2010_ReAssignActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReAssignActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_ReAssignActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="FinishActivity">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivity" message="tns:ICoreService2010_FinishActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivityResponse" message="tns:ICoreService2010_FinishActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/FinishActivityCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_FinishActivity_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ForceFinishProcess">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcess" message="tns:ICoreService2010_ForceFinishProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcessResponse" message="tns:ICoreService2010_ForceFinishProcess_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ForceFinishProcessCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_ForceFinishProcess_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetApiVersion">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersion" message="tns:ICoreService2010_GetApiVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersionResponse" message="tns:ICoreService2010_GetApiVersion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetApiVersionCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetApiVersion_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetCurrentUser">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUser" message="tns:ICoreService2010_GetCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUserResponse" message="tns:ICoreService2010_GetCurrentUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetCurrentUserCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetCurrentUser_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="IsExistingObject">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObject" message="tns:ICoreService2010_IsExistingObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObjectResponse" message="tns:ICoreService2010_IsExistingObject_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/IsExistingObjectCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_IsExistingObject_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetTcmUri">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUri" message="tns:ICoreService2010_GetTcmUri_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUriResponse" message="tns:ICoreService2010_GetTcmUri_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetTcmUriCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetTcmUri_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Read">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Read" message="tns:ICoreService2010_Read_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadResponse" message="tns:ICoreService2010_Read_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Read_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ReadSchemaFields">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFields" message="tns:ICoreService2010_ReadSchemaFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFieldsResponse" message="tns:ICoreService2010_ReadSchemaFields_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReadSchemaFieldsCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_ReadSchemaFields_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ConvertSchemaFieldsToXsd">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsd" message="tns:ICoreService2010_ConvertSchemaFieldsToXsd_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsdResponse" message="tns:ICoreService2010_ConvertSchemaFieldsToXsd_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ConvertSchemaFieldsToXsdCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_ConvertSchemaFieldsToXsd_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Save">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Save" message="tns:ICoreService2010_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SaveResponse" message="tns:ICoreService2010_Save_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/SaveCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Save_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Delete">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Delete" message="tns:ICoreService2010_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteResponse" message="tns:ICoreService2010_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Delete_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeleteTaxonomyNode">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNode" message="tns:ICoreService2010_DeleteTaxonomyNode_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNodeResponse" message="tns:ICoreService2010_DeleteTaxonomyNode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/DeleteTaxonomyNodeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_DeleteTaxonomyNode_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetDefaultData">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultData" message="tns:ICoreService2010_GetDefaultData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultDataResponse" message="tns:ICoreService2010_GetDefaultData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetDefaultDataCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetDefaultData_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Move">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Move" message="tns:ICoreService2010_Move_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/MoveResponse" message="tns:ICoreService2010_Move_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/MoveCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Move_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Copy">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Copy" message="tns:ICoreService2010_Copy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CopyResponse" message="tns:ICoreService2010_Copy_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CopyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Copy_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CheckOut">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOut" message="tns:ICoreService2010_CheckOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOutResponse" message="tns:ICoreService2010_CheckOut_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckOutCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_CheckOut_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CheckIn">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckIn" message="tns:ICoreService2010_CheckIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckInResponse" message="tns:ICoreService2010_CheckIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CheckInCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_CheckIn_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Update">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Update" message="tns:ICoreService2010_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UpdateResponse" message="tns:ICoreService2010_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UpdateCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Update_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Create">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Create" message="tns:ICoreService2010_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CreateResponse" message="tns:ICoreService2010_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/CreateCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Create_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UndoCheckOut">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOut" message="tns:ICoreService2010_UndoCheckOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOutResponse" message="tns:ICoreService2010_UndoCheckOut_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UndoCheckOutCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_UndoCheckOut_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Rollback">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Rollback" message="tns:ICoreService2010_Rollback_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RollbackResponse" message="tns:ICoreService2010_Rollback_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/RollbackCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Rollback_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Localize">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Localize" message="tns:ICoreService2010_Localize_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/LocalizeResponse" message="tns:ICoreService2010_Localize_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/LocalizeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Localize_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UnLocalize">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalize" message="tns:ICoreService2010_UnLocalize_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalizeResponse" message="tns:ICoreService2010_UnLocalize_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnLocalizeCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_UnLocalize_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetSystemWideListXml">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXml" message="tns:ICoreService2010_GetSystemWideListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXmlResponse" message="tns:ICoreService2010_GetSystemWideListXml_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListXmlCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetSystemWideListXml_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetSystemWideList">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideList" message="tns:ICoreService2010_GetSystemWideList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListResponse" message="tns:ICoreService2010_GetSystemWideList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetSystemWideListCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetSystemWideList_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListXml">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXml" message="tns:ICoreService2010_GetListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXmlResponse" message="tns:ICoreService2010_GetListXml_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListXmlCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListXml_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListDirectoryServiceNames">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNames" message="tns:ICoreService2010_GetListDirectoryServiceNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNamesResponse" message="tns:ICoreService2010_GetListDirectoryServiceNames_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceNamesCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListDirectoryServiceNames_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListWindowsDomainUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsers" message="tns:ICoreService2010_GetListWindowsDomainUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsersResponse" message="tns:ICoreService2010_GetListWindowsDomainUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListWindowsDomainUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListWindowsDomainUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListDirectoryServiceUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsers" message="tns:ICoreService2010_GetListDirectoryServiceUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsersResponse" message="tns:ICoreService2010_GetListDirectoryServiceUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListDirectoryServiceUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListDirectoryServiceGroupMembers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembers" message="tns:ICoreService2010_GetListDirectoryServiceGroupMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembersResponse" message="tns:ICoreService2010_GetListDirectoryServiceGroupMembers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceGroupMembersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListDirectoryServiceGroupMembers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetListDirectoryServiceSubtreeUsers">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsers" message="tns:ICoreService2010_GetListDirectoryServiceSubtreeUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsersResponse" message="tns:ICoreService2010_GetListDirectoryServiceSubtreeUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/GetListDirectoryServiceSubtreeUsersCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetListDirectoryServiceSubtreeUsers_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Classify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/Classify" message="tns:ICoreService2010_Classify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ClassifyResponse" message="tns:ICoreService2010_Classify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Classify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UnClassify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassify" message="tns:ICoreService2010_UnClassify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassifyResponse" message="tns:ICoreService2010_UnClassify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/UnClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_UnClassify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ReClassify">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassify" message="tns:ICoreService2010_ReClassify_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassifyResponse" message="tns:ICoreService2010_ReClassify_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ICoreService2010/ReClassifyCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_ReClassify_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Impersonate">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/Impersonate" message="tns:ISessionAwareCoreService2010_Impersonate_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/ImpersonateResponse" message="tns:ISessionAwareCoreService2010_Impersonate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/ImpersonateCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_Impersonate_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="true" name="TerminateSession">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/TerminateSession" message="tns:ISessionAwareCoreService2010_TerminateSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/TerminateSessionResponse" message="tns:ISessionAwareCoreService2010_TerminateSession_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/TerminateSessionCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_TerminateSession_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetSessionId">
+      <wsdl:input wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/GetSessionId" message="tns:ISessionAwareCoreService2010_GetSessionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/GetSessionIdResponse" message="tns:ISessionAwareCoreService2010_GetSessionId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.sdltridion.com/ContentManager/CoreService/2010/ISessionAwareCoreService2010/GetSessionIdCoreServiceFaultFault" name="CoreServiceFaultFault" message="tns:ISessionAwareCoreService2010_GetSessionId_CoreServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Tridion.ContentManager.Publishing" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Tridion.ContentManager.Publishing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sdltridion.electridion.com/webservices/CoreService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="PublishPriority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Low">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Normal">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="High">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PublishPriority" nillable="true" type="tns:PublishPriority" />
+  <xs:simpleType name="DeployerAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Commit" />
+      <xs:enumeration value="Wait" />
+      <xs:enumeration value="Abort" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DeployerAction" nillable="true" type="tns:DeployerAction" />
+  <xs:simpleType name="RenderMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Publish" />
+      <xs:enumeration value="PreviewStatic" />
+      <xs:enumeration value="PreviewDynamic" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RenderMode" nillable="true" type="tns:RenderMode" />
+  <xs:simpleType name="PublishTransactionState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ScheduledForPublish" />
+      <xs:enumeration value="WaitingForPublish" />
+      <xs:enumeration value="InProgress" />
+      <xs:enumeration value="ScheduledForDeployment" />
+      <xs:enumeration value="WaitingForDeployment" />
+      <xs:enumeration value="Failed" />
+      <xs:enumeration value="Succes" />
+      <xs:enumeration value="Success">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Warning">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PublishTransactionState" nillable="true" type="tns:PublishTransactionState" />
+</xs:schema>
