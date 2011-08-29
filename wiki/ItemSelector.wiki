@@ -1,0 +1,9 @@
+#summary The Item Selector Custom URL eXtension is a SDL Tridion 2011 Custom URL, which allows you to select an item URI from a SDL Tridion tree view.
+
+= Introduction =
+
+This extension is released on SDl Tridion World, a full description can be found on [http://sdltridionworld.com/community/2011_extensions/itemselector.aspx]
+
+= Version =
+
+This eXtension is developed and tested on SDL Tridion 2011 (including HR1)
