@@ -6,4 +6,4 @@ Contains functions which render a ComponentField using the uiltInFunctions.Rende
 
 = Version =
 
-This functions source is created and tested on SDL Tridion 2011 (including HR1). As it is using the Modular Templating model, it should work from versions R5.3 and up.
+This functions source is created and tested on SDL Tridion 2011 (including HR1). As it is using the Modular Templating model, it should work from versions `R5.3` and up.
