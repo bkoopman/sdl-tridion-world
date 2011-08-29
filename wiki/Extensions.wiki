@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). These extension are released to the public domain under the Reciprocal Public License (RPL) so that everybody can use them and help to further develop it.
+Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). These extension are released to the public domain under the Reciprocal Public License (RPL) so that everybody can use, and help to further develop them.
 
 = Contents =
 
