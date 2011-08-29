@@ -1,13 +1,5 @@
-#summary One-sentence summary of this page.
+#summary Open source eXtensions for SDL Tridion.
 
 = Introduction =
 
-Here you will find eXtensions for SDL Tridion.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). These extension are released to the public domain under the Reciprocal Public License (RPL) so that everybody can use them and help to further develop it.
