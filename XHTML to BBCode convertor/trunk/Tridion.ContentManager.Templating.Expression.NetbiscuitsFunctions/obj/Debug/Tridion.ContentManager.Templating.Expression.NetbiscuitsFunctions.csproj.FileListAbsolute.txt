@@ -1,0 +1,5 @@
+D:\Dev\sdl-tridion-world\XHTML to BBCode convertor\trunk\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions\bin\Debug\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions.dll
+D:\Dev\sdl-tridion-world\XHTML to BBCode convertor\trunk\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions\bin\Debug\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions.pdb
+D:\Dev\sdl-tridion-world\XHTML to BBCode convertor\trunk\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions\obj\Debug\ResolveAssemblyReference.cache
+D:\Dev\sdl-tridion-world\XHTML to BBCode convertor\trunk\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions\obj\Debug\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions.dll
+D:\Dev\sdl-tridion-world\XHTML to BBCode convertor\trunk\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions\obj\Debug\Tridion.ContentManager.Templating.Expression.NetbiscuitsFunctions.pdb
