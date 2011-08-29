@@ -6,5 +6,5 @@ Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). The
 
 = Contents =
 
-  * ItemSelector - Custom URL for selecting an item URI from a SDL Tridion tree view
-  * XHTMLtoBBCode - DWT Template function source for converting RTF XHTML into BBCode
+  * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view
+  * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode
