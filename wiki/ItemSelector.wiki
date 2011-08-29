@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This extension is released on SDl Tridion World, a full description can be found on [http://sdltridionworld.com/community/2011_extensions/itemselector.aspx]
+This extension is released on SDL Tridion World, a full description can be found on [http://sdltridionworld.com/community/2011_extensions/itemselector.aspx]
 
 = Version =
 
