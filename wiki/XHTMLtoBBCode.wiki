@@ -1,0 +1,9 @@
+#summary DWT function source for converting RTF XHTML to BBCode
+
+= Introduction =
+
+Contains functions which render a ComponentField using the uiltInFunctions.RenderComponentField(string, int) function and converts that to Netbiscuits BBCode.
+
+= Version =
+
+This functions source is created and tested on SDL Tridion 2011 (including HR1). As it is using the Modular Templating model, it should work from versions R5.3 and up.
