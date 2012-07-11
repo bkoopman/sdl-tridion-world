@@ -13,6 +13,8 @@ namespace Social.Model.Response
         private string _shortUrl = string.Empty;
         private bool _isPublished = false;
         private bool _useShortUrl = false;
+        private bool _hasError = false;
+        private Exception _errorInfo = null;
 
         public SocialPageData() { }
 
@@ -50,6 +52,18 @@ namespace Social.Model.Response
         {
             get { return _useShortUrl; }
             set { _useShortUrl = value; }
+        }
+
+        public bool HasError
+        {
+            get { return _hasError; }
+            set { _hasError = value; }
+        }
+
+        public Exception ErrorInfo
+        {
+            get { return _errorInfo; }
+            set { _errorInfo = value; }
         }
     }
 }
