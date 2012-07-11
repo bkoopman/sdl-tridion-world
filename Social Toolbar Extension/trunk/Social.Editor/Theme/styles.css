@@ -1,0 +1,61 @@
+﻿.tridion #SubmitToBing .image,
+.tridion #BingLinks .image
+{ 
+	background-image:url({ThemePath}/images/icons/bing-icon32x32.png);
+	background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #SubmitToBing .image,
+.tridion .contextmenu #SubmitToBing .image,
+.tridion .ribbontoolbar.minimized #BingLinks .image,
+.tridion .contextmenu #BingLinks .image
+{
+    background-image:url({ThemePath}/images/icons/bing-icon16x16.png);
+}
+
+.tridion #SubmitToGoogle .image
+{ 
+	background-image:url({ThemePath}/images/icons/google-icon32x32.png);
+	background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #SubmitToGoogle .image,
+.tridion .contextmenu #SubmitToGoogle .image
+{
+    background-image:url({ThemePath}/images/icons/google-icon16x16.png);
+}
+
+.tridion #SubmitToYahoo .image
+{ 
+	background-image:url({ThemePath}/images/icons/yahoo-icon32x32.png);
+	background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #SubmitToYahoo .image,
+.tridion .contextmenu #SubmitToYahoo .image
+{
+    background-image:url({ThemePath}/images/icons/yahoo-icon16x16.png);
+}
+
+.tridion #InternalLinks .image { 
+	background-image:url({ThemePath}/images/icons/linkinternal-icon32x32.png);
+	background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #InternalLinks .image,
+.tridion .contextmenu #InternalLinks .image
+{
+    background-image:url({ThemePath}/images/icons/linkinternal-icon16x16.png);
+}
+
+.tridion #YouTubeUpload .image
+{
+	background-image:url({ThemePath}/images/icons/youtube-icon32x32.png);
+	background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #YouTubeUpload .image,
+.tridion .contextmenu #YouTubeUpload .image
+{
+    background-image:url({ThemePath}/images/icons/youtube-icon16x16.png);
+}

@@ -1,0 +1,11 @@
+﻿.tridion #PostToFacebook .image 
+{
+    background-image:url({ThemePath}/images/icons/facebook-icon32x32.png);
+    background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #PostToFacebook .image,
+.tridion .contextmenu #PostToFacebook .image
+{
+    background-image:url({ThemePath}/images/icons/facebook-icon16x16.png);
+}

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD4D9F9E-3E28-4B80-B920-6363C2E06522}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Social.Editor</RootNamespace>
+    <AssemblyName>Social.Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Commands\DiggThis.js" />
+    <Content Include="Commands\GoogleLinks.js" />
+    <Content Include="Commands\PostToFacebook.js" />
+    <Content Include="Commands\PostToLinkedIn.js" />
+    <Content Include="Commands\ToDo.js" />
+    <Content Include="Commands\TweetThis.js" />
+    <Content Include="Commands\YouTubeUpload.js" />
+    <Content Include="Shared\ShareBaseCommand.js" />
+    <Content Include="Theme\digg.css" />
+    <Content Include="Theme\facebook.css" />
+    <Content Include="Theme\google.css" />
+    <Content Include="Theme\images\icons\analytics-icon16x16.png" />
+    <Content Include="Theme\images\icons\analytics-icon32x32.png" />
+    <Content Include="Theme\images\icons\bing-icon16x16.png" />
+    <Content Include="Theme\images\icons\bing-icon32x32.png" />
+    <Content Include="Theme\images\icons\digg-icon16x16.png" />
+    <Content Include="Theme\images\icons\digg-icon32x32.png" />
+    <Content Include="Theme\images\icons\facebook-icon16x16.png" />
+    <Content Include="Theme\images\icons\facebook-icon32x32.png" />
+    <Content Include="Theme\images\icons\google-icon16x16.png" />
+    <Content Include="Theme\images\icons\google-icon32x32.png" />
+    <Content Include="Theme\images\icons\googleanalytics-icon16x16.png" />
+    <Content Include="Theme\images\icons\googleanalytics-icon32x32.png" />
+    <Content Include="Theme\images\icons\linkedin-icon16x16.png" />
+    <Content Include="Theme\images\icons\linkedin-icon32x32.png" />
+    <Content Include="Theme\images\icons\linkinternal-icon16x16.png" />
+    <Content Include="Theme\images\icons\linkinternal-icon32x32.png" />
+    <Content Include="Theme\images\icons\referral-icon16x16.png" />
+    <Content Include="Theme\images\icons\referral-icon32x32.png" />
+    <Content Include="Theme\images\icons\twitter-icon16x16.png" />
+    <Content Include="Theme\images\icons\twitter-icon32x32.png" />
+    <Content Include="Theme\images\icons\yahoo-icon16x16.png" />
+    <Content Include="Theme\images\icons\yahoo-icon32x32.png" />
+    <Content Include="Theme\images\icons\youtube-icon16x16.png" />
+    <Content Include="Theme\images\icons\youtube-icon32x32.png" />
+    <Content Include="Theme\linkedin.css" />
+    <Content Include="Theme\styles.css" />
+    <Content Include="Theme\twitter.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Configuration\Editor.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63620</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

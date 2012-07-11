@@ -1,0 +1,11 @@
+﻿.tridion #DiggThis .image 
+{
+    background-image:url({ThemePath}/images/icons/digg-icon32x32.png);
+    background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #DiggThis .image,
+.tridion .contextmenu #DiggThis .image
+{
+    background-image:url({ThemePath}/images/icons/digg-icon16x16.png);
+}

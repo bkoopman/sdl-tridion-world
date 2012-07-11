@@ -1,0 +1,11 @@
+﻿.tridion #TweetThis .image 
+{
+    background-image:url({ThemePath}/images/icons/twitter-icon32x32.png);
+    background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #TweetThis .image,
+.tridion .contextmenu #TweetThis .image
+{
+    background-image:url({ThemePath}/images/icons/twitter-icon16x16.png);
+}

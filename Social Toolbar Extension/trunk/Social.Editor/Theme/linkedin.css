@@ -1,0 +1,11 @@
+﻿.tridion #PostToLinkedIn .image 
+{
+    background-image:url({ThemePath}/images/icons/linkedin-icon32x32.png);
+    background-repeat:no-repeat;
+}
+
+.tridion .ribbontoolbar.minimized #PostToLinkedIn .image,
+.tridion .contextmenu #PostToLinkedIn .image
+{
+    background-image:url({ThemePath}/images/icons/linkedin-icon16x16.png);
+}
