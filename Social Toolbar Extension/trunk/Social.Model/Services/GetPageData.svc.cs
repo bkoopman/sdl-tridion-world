@@ -26,12 +26,11 @@ namespace Social.Model.Services
         public SocialPageData Execute(string pageUri)
         {
             SessionAwareCoreServiceClient client = null;
+            SocialPageData socialPageData = new SocialPageData();
 
             try
             {
                 client = Client.GetCoreService();
-
-                SocialPageData socialPageData = new SocialPageData();
 
                 string liveTargetUri = Configuration.GetConfigString("livetargeturi");
                 string liveUrl = Configuration.GetConfigString("liveurl");
@@ -76,8 +75,11 @@ namespace Social.Model.Services
                 }
 
                 socialPageData.ShortUrl = shortUrl;
-
-                return socialPageData;
+            }
+            catch (Exception ex)
+            {
+                socialPageData.HasError = true;
+                socialPageData.ErrorInfo = ex;
             }
             finally
             {
@@ -93,6 +95,8 @@ namespace Social.Model.Services
                     }
                 }
             }
+
+            return socialPageData;
         }
     }
 }

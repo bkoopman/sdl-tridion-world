@@ -14,7 +14,7 @@ Social.ShareBaseCommand.prototype.initialize = function () {
     p.initialized = true;
 }
 
-Social.ShareBaseCommand.prototype.isAvailable = function(selection, pipeline) {
+Social.ShareBaseCommand.prototype.isAvailable = function (selection, pipeline) {
     var p = this.properties;
 
     if (selection.getCount() == 1) {
@@ -26,7 +26,9 @@ Social.ShareBaseCommand.prototype.isAvailable = function(selection, pipeline) {
                 Social.Model.Services.GetPageData.Execute(uriSelection, function (response) { p.PageData = response; }, null, null, true);
             }
 
-            return p.PageData.IsPublished;
+            if (p.PageData != null && !p.PageData.HasError) {
+                return p.PageData.IsPublished;
+            }
         }
     }
     return false;
@@ -35,7 +37,7 @@ Social.ShareBaseCommand.prototype.isAvailable = function(selection, pipeline) {
 Social.ShareBaseCommand.prototype.isEnabled = function(selection, pipeline) {
     var p = this.properties;
 
-    if (p.PageData != null) {
+    if (p.PageData != null && !p.PageData.HasError) {
         return p.PageData.IsPublished;
     }
     return false;
