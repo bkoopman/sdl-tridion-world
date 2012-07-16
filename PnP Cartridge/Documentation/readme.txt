@@ -11,4 +11,4 @@ Claims will be added using one of two claim subjects. These are:
 1. taf:claim:pnp:characteristics for Customer Characteristics.
 2. taf:claim:pnp:trackingkeys for Tracking Keys.
 
-Claim will be added for each characteristic or tracking key found in the relevant collections.
+Claim will be added for each characteristic or tracking key found in the relevant collections as "%SUBJECT%:%ITEM_NAME%.
