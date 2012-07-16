@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CartridgeDefinition Uri="taf:cartridge:pnp"
+	Description="Personalization &amp; Profiling ADF Cartridge." Version="1.0">
+	<ClaimDefinitions>
+		<ClaimDefinition Uri="taf:claim:pnp:trackingkeys:set"
+			Scope="SESSION" Subject="taf:claim:pnp:trackingkeys"
+			Description="Identifies if Tracking Key walues have been stored." />
+		<ClaimDefinition Uri="taf:claim:pnp:characteristics:set"
+			Scope="SESSION" Subject="taf:claim:pnp:characteristics"
+			Description="Identifies if Customer Characteristics values have been stored." />
+	</ClaimDefinitions>
+
+	<ClaimProcessorDefinitions>
+		<ClaimProcessorDefinition Uri="taf:claimprocessor:pnp"
+			ImplementationClass="com.tridion.extension.adf.PnPClaimProcessor"
+			Description="Creates claims based on Tracking Key and Customer Characteristics information">
+			<RequestEnd>
+				<InputClaims />
+				<OutputClaims>
+					<ClaimDefinition Uri="taf:claim:pnp:trackingkeys:set" />
+					<ClaimDefinition Uri="taf:claim:pnp:characteristics:set" />
+				</OutputClaims>
+			</RequestEnd>
+		</ClaimProcessorDefinition>
+	</ClaimProcessorDefinitions>
+</CartridgeDefinition>
