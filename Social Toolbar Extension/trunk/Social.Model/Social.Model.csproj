@@ -73,18 +73,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="CoreService\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response\SocialPageData.cs" />
     <Compile Include="Services\GetPageData.svc.cs">
       <DependentUpon>GetPageData.svc</DependentUpon>
     </Compile>
     <Compile Include="UrlShortening\Bitly.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Social.Common\Social.Common.csproj">
-      <Project>{1C0712D8-D147-434E-AEDE-486F7808DC0D}</Project>
-      <Name>Social.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configuration\Model.config">

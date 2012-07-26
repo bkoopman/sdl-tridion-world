@@ -2,7 +2,7 @@
 using Tridion.Web.UI;
 using Tridion.Web.UI.Core;
 
-namespace Social.Common
+namespace Social.Model
 {
     public class Configuration
     {
