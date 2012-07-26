@@ -2,8 +2,6 @@
 using System.Net;
 using System.IO;
 using System.Web;
-
-using Social.Common;
 using System.Xml;
 
 namespace Social.Model.UrlShortening

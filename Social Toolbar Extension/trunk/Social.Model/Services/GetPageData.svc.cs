@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 
-using Social.Common;
-using Social.Common.CoreService;
+using Social.Model.CoreService;
 using Social.Model.Response;
 using Social.Model.UrlShortening;
 using Tridion.ContentManager.CoreService.Client;

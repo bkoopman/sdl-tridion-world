@@ -53,6 +53,7 @@
   <ItemGroup>
     <Content Include="Commands\DiggThis.js" />
     <Content Include="Commands\GoogleLinks.js" />
+    <Content Include="Commands\NewUiSampleCommand.js" />
     <Content Include="Commands\PostToFacebook.js" />
     <Content Include="Commands\PostToLinkedIn.js" />
     <Content Include="Commands\ToDo.js" />

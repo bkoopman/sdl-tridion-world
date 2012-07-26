@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using Tridion.ContentManager.CoreService.Client;
 
-namespace Social.Common.CoreService
+namespace Social.Model.CoreService
 {
     public class Client
     {
@@ -30,8 +30,7 @@ namespace Social.Common.CoreService
                 Security = { Mode = SecurityMode.Message, Transport = { ClientCredentialType = HttpClientCredentialType.Windows } }
             };
 
-            var endpoint = new EndpointAddress("http://localhost/WebServices/CoreService2011.svc/wsHttp");
-            var result = new SessionAwareCoreServiceClient(httpBinding, endpoint);
+            var result = new SessionAwareCoreServiceClient();
             result.Impersonate(userName);
 
             return result;
