@@ -48,28 +48,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Tridion.Common, Version=7.0.0.142, Culture=neutral, PublicKeyToken=349a39f202fa9b53, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Tridion\bin\client\Tridion.Common.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013\Tridion.Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager.CoreService.Client, Version=7.0.0.2303, Culture=neutral, PublicKeyToken=ddfc895746e5ee6b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Tridion\bin\client\CoreService\Tridion.ContentManager.CoreService.Client.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013\CoreService\Tridion.ContentManager.CoreService.Client.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

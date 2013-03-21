@@ -26,4 +26,4 @@
     <!-- configure SDL Tridion URL and CoreService URL in Web.config -->
     </form>
 </body>
-</html
+</html>
