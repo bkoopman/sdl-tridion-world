@@ -68,7 +68,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configuration\EclImportModel.config" />
+    <None Include="Configuration\EclImportModel.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="deploy.bat" />
     <None Include="Web.config" />
   </ItemGroup>
