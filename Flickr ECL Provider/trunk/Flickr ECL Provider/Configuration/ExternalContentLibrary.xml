@@ -1,0 +1,18 @@
+﻿<Configuration xmlns="http://www.sdltridion.com/ExternalContentLibrary/Configuration">
+    <!-- Available logging levels: Debug, Info, Warning, Error -->
+    <l:Logging Level="Warning" xmlns:l="http://www.sdltridion.com/Infrastructure/LoggingConfiguration">
+        <!-- Additional supported attributes: Language="rfc1766 code" Locale="rfc1766 code". An example of an rfc1766 code is "de-DE" for German. /-->
+        <!-- <l:Folder>Full path to logging folder, default is %TRIDION%/bin/log</l:Folder>-->
+    </l:Logging>
+    <CoreServiceUrl>net.tcp://localhost:2660/CoreService/2011/netTcp</CoreServiceUrl>
+    <MountPoints>
+        <MountPoint type="FlickrProvider" version="*" id="flickr" rootItemName="Flickr">
+            <StubFolders>
+                <StubFolder id="tcm:1-3-2" />
+            </StubFolders>
+            <PrivilegedUserName>hostname\administrator</PrivilegedUserName>
+            <FlickrApiKey xmlns="http://flickr.com/services/api">Your Flickr API key, see http://www.flickr.com/services/ if you don't know what this is.</FlickrApiKey>
+            <FlickrNSID xmlns="http://flickr.com/services/api">Your Flickr NSID (user id).</FlickrNSID>
+        </MountPoint>
+    </MountPoints>
+</Configuration>
