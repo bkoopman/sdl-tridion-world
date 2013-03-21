@@ -1,0 +1,13 @@
+﻿body 
+{
+    
+}
+
+.contextmenu .item.ImportItem .image
+{
+	background-image: url({ThemePath["CME"]}Images/Icons/upload-multimedia-component.16x16.png);
+}
+.ie .contextmenu .item.disabled..item.ImportItem .image
+{
+	background-image: url({ThemePath["CME"]}Images/Icons/upload-multimedia-component.16x16.gray.png);
+}

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECL Import Model", "ECL Import Model\ECL Import Model.csproj", "{846BFC20-9E14-43C4-8A68-E4BE1F2BF34B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECL Import Editor", "ECL Import Editor\ECL Import Editor.csproj", "{F40ED5DF-0DE1-4679-844D-EEDBC959F69A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{846BFC20-9E14-43C4-8A68-E4BE1F2BF34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846BFC20-9E14-43C4-8A68-E4BE1F2BF34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846BFC20-9E14-43C4-8A68-E4BE1F2BF34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846BFC20-9E14-43C4-8A68-E4BE1F2BF34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40ED5DF-0DE1-4679-844D-EEDBC959F69A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40ED5DF-0DE1-4679-844D-EEDBC959F69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40ED5DF-0DE1-4679-844D-EEDBC959F69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40ED5DF-0DE1-4679-844D-EEDBC959F69A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
