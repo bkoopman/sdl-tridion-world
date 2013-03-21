@@ -1,0 +1,16 @@
+#summary 2013 UI extension which adds import capabilities for ECL items.
+
+= Introduction =
+
+This UI extension adds support for copying the content of an ECL item into a Multimedia Component. It can be used as a one time import tool for entire folders with ECL items.
+
+
+= Details =
+
+The content is imported from the ECL item by either calling `GetContent` or reading the content from the location specified by the `GetDirectLinkToPublished` method.
+
+Through the Core Service a new Multimedia Component is created and if this contains a metadata field named `data` (consisting of an embeddable schema with multi value `key` and `value` fields), also the External metadata of the ECl item is imported in the Multimedi Component. 
+
+The extension is supposed to work on both the CME and XPM, but the latter has a minor defect (script not correctly loaded) and currently doesn't work.
+
+In the `EclImportEditor.config` file the item id of multimedia schema to use for imported content and item id of target folder for imports can be configured.
