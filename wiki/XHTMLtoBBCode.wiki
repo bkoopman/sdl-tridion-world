@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Contains functions which render a ComponentField using the BuiltInFunctions.RenderComponentField(string, int) function and converts that to the by Netbiscuits required BBCode for BiscuitML output.
+Contains functions which render a `ComponentField` using the `BuiltInFunctions.RenderComponentField(string, int)` function and converts that to the by Netbiscuits required BBCode for BiscuitML output.
 
 = Version =
 
