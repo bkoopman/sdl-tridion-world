@@ -2,7 +2,7 @@
 
 = Introduction =
 
-ECl in 2013 comes with a default set of Template Building Blocks which allow you to resolve ECL URIs in your templates to the actual item (similar to how that is done with Multimedia Components). But the build in TBBs only consider ECL items which have implemented the GetDirectLinkToPublished method. They do not work with providers that implemented the GetContent method expecting SDL Tridion to publish their content.
+ECl in 2013 comes with a default set of Template Building Blocks which allow you to resolve ECL URIs in your templates to the actual item (similar to how that is done with Multimedia Components). But the build in TBBs only consider ECL items which have implemented the `GetDirectLinkToPublished` method. They do not work with providers that implemented the `GetContent` method expecting SDL Tridion to publish their content.
 
 This TBB is meant as a replacement for the *Search External Content Library items* and *Resolve External Content Library items* TBBs which come with 2013 ECL and handles correctly implementations of either  `GetDirectLinkToPublished` or `GetContent` (if `GetDirectLinkToPublished` returns null or an empty string, it tries `GetContent` assuming the content must be published by SDL Tridion).
 
