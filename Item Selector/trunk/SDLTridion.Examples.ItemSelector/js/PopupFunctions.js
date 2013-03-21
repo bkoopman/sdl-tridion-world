@@ -1,4 +1,5 @@
-﻿var idonly = false;
+﻿/** global variable for returning id vs. tcmuri, set during init */
+var idonly = false;
 
 /**
 * Initialize and load Item Selector iframe.

@@ -10,5 +10,4 @@ try {
         op.Tridion.Controls.Popup.registerView(null, window);
     }
 }
-catch (e) {
-}
+catch (e) { }

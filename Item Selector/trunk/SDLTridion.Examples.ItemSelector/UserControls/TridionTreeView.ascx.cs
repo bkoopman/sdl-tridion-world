@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
@@ -104,7 +103,7 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
                         }
                         break;
                     case ItemType.Folder:
-                        XElement items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData() { Recursive = false });
+                        XElement items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData { Recursive = false });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.WorkItem: // fake type id, representing the categories & keywords node!
@@ -112,18 +111,16 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.StructureGroup:
-                        items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData() { Recursive = false });
+                        items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData { Recursive = false });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.Category:
-                        items = _client.GetListXml(uri.ToString(), new KeywordsFilterData() { IsRoot = true });
+                        items = _client.GetListXml(uri.ToString(), new KeywordsFilterData { IsRoot = true });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.Keyword:
                         items = _client.GetListXml(uri.ToString(), new ChildKeywordsFilterData());
                         doc.Load(items.CreateReader());
-                        break;
-                    default:
                         break;
                 }
             }
