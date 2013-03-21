@@ -1,0 +1,12 @@
+#summary Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
+
+= Introduction =
+
+Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion. This has been build for SDL Tridion 2013 using the External Content Library APIs. 
+
+The code is released as an open source example under the Reciprocal Public License (RPL). This allows for free usage and further development.
+
+
+= Details =
+
+Requires a Flicker account and API key, see http://www.flickr.com/services/ for details.
