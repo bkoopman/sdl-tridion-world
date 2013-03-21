@@ -1,0 +1,8 @@
+﻿<!-- This configuration fragment is intended to be inserted into
+     the Tridion.Web.UI system configuration (This is the Model registration fragment)
+		 This fragment should be placed inside the "/configuration/models" element -->
+<model name="EclImport">
+	<installpath>C:\Tridion\web\WebUI\Models\EclImport</installpath>
+	<configuration>Configuration\EclImportModel.config</configuration>
+	<vdir>EclImport</vdir>
+</model>

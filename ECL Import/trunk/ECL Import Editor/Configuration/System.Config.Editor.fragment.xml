@@ -1,0 +1,8 @@
+﻿<!-- This configuration fragment is intended to be inserted into
+     the Tridion.Web.UI system configuration (This is the Editor registration fragment)
+		 This fragment should be placed inside the "/configuration/editors" element -->
+<editor name="EclImport">
+	<installpath>C:\Tridion\web\WebUI\Editors\EclImport</installpath>
+	<configuration>Configuration\EclImportEditor.config</configuration>
+	<vdir>EclImport</vdir>
+</editor>
