@@ -74,12 +74,11 @@ namespace EclImport.Model.Services
         {
             string id = "tcm:0-0-0";
             IContentLibraryMultimediaItem eclItem = (IContentLibraryMultimediaItem)_eclContentLibraryContext.GetItem(eclUri);
+            string extension = eclItem.Filename.Substring(0, eclItem.Filename.LastIndexOf('.'));
             MemoryStream ms = null;
             string tempPath;
-            string filename;
-            string extension;
             try
-            {                
+            {
                 // create some template attributes
                 IList<ITemplateAttribute> attributes = CreateTemplateAttributes(eclItem);
 
@@ -103,19 +102,10 @@ namespace EclImport.Model.Services
                     }
                 }
 
-                // ECL 1.0 does not tell us the original filename, so we have to guess the filename and extension, for flickr its always a .jpg
-                filename = eclItem.Title.Contains(".") ? eclItem.Title.Substring(0, eclItem.Title.LastIndexOf('.')) : eclItem.Title;
-                extension = ".jpg";
-                if (string.IsNullOrEmpty(eclItem.MimeType))
-                {
-                    // dropbox does not have mimetypes set, so get it from the item id (which is the file path)
-                    extension = GetExtension(eclItem.Id.ItemId);
-                }
-
                 // upload binary
                 using (StreamUploadClient streamUploadClient = new StreamUploadClient(_binding, _endpoint))
                 {
-                    tempPath = streamUploadClient.UploadBinaryContent(filename + extension, ms);
+                    tempPath = streamUploadClient.UploadBinaryContent(eclItem.Filename, ms);
                 }
             }
             finally
@@ -172,7 +162,7 @@ namespace EclImport.Model.Services
                 mmComponent.BinaryContent = new BinaryContentData
                 {
                     UploadFromFile = tempPath,
-                    Filename = filename + extension,
+                    Filename = eclItem.Filename,
                     MultimediaType = new LinkToMultimediaTypeData { IdRef = multimediaType.Id }
                 };
 
@@ -199,15 +189,6 @@ namespace EclImport.Model.Services
             attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>("src", eclItem.Id.ToString())));
 
             return attributes;
-        }
-
-        private static string GetExtension(string path)
-        {
-            if (path.Contains("."))
-            {
-                path = path.Substring(path.LastIndexOf('.'));
-            }
-            return path;
         }
 
         private static string GetNamespace(string xml)

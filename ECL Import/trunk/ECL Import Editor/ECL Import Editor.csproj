@@ -42,7 +42,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configuration\EclImportEditor.config" />
+    <None Include="Configuration\EclImportEditor.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="deploy.bat" />
   </ItemGroup>
   <ItemGroup>
