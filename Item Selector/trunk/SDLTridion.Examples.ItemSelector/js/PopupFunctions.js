@@ -1,7 +1,13 @@
-﻿/**
+﻿var idonly = false;
+
+/**
 * Initialize and load Item Selector iframe.
 */
 function init() {
+    if (window.location.search.length > 0 && window.location.search.indexOf("idonly") != -1) {
+        idonly = true;
+    }
+    
     var args = window.dialogArguments;
     if (args) {
         /*
@@ -31,18 +37,25 @@ function init() {
 /**
 * Set selected value back in field and close popup window.
 */
-function setvalue(id) {
+function setvalue(uri) {
+    var value = uri;
+    if (idonly) {
+        // split tcmuri and use item id as value (tcm:2-3-4, item id = 3)
+        var parts = uri.split("-");
+        value = parts[1];
+    }
+
     var args = window.dialogArguments;
     // set field value
     if (args) {
         var fields = args.getFields();
         if (fields && fields.length > 0) {
-            fields[0].setValues([id]);
+            fields[0].setValues([value]);
         }
     }
     else {
         // when there is no window.dialogArguments, just display value
-        alert(id);
+        alert(value);
     }
 
     // close popup
