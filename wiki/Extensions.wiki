@@ -8,3 +8,6 @@ Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). The
 
   * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view
   * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode
+  * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion
+  * [EclTbb] - Example ECL Template Building Blocks
+  * [EclImport] - 2013 UI extension which adds import capabilities for ECL items
