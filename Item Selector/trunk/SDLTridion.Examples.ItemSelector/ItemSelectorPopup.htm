@@ -22,7 +22,8 @@
 </head>
 <body onload="init();">
     <!-- the uri from where the tree should start can be set on querystring using "start" and which types can be selected, can be set using "types" -->
-    <!-- for example: http://website.url/ItemSelectorPopup.htm?start=tcm:0-2-1&types=1112 -->
+    <!-- if you want to return IDs in stead of TCMURIs, add the variable "idonly" to the querystring -->
+    <!-- for example: http://website.url/ItemSelectorPopup.htm?start=tcm:0-2-1&types=1112&idonly -->
     <!-- if "start" is not set, tree will start from the publication id of the item from where the custom url is called -->
     <!-- configure SDL Tridion URL and CoreService URL in Web.config -->
     <iframe id="selectorframe" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>

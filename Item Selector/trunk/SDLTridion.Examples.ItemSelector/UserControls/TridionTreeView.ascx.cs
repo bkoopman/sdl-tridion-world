@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Linq;
+using System.Net;
+using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Linq;
-using SDLTridion.Examples.ItemSelector.SDLTridionCoreServiceClient;
 using Tridion.ContentManager;
 using System.Configuration;
+using Tridion.ContentManager.CoreService.Client;
+using ItemType = Tridion.ContentManager.ItemType;
 
 namespace SDLTridion.Examples.ItemSelector.UserControls
 {
     public partial class TridionTreeView : System.Web.UI.UserControl
     {
         #region Constants
-        // 2011 CME paths
-        const string IconPath = "/WebUI/Editors/CME/Themes/Carbon/icon_v6.0.0.39607.0_.png";
-        const string CollapseImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreeMinus1_v6.0.0.39607.0_.png";
-        const string ExpandImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreePlus1_v6.0.0.39607.0_.png";
+        // 2011 SP1 CME paths
+        const string IconPath = "/WebUI/Editors/CME/Themes/Carbon/icon_v6.1.0.55920.1_.png";
+        const string CollapseImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreeMinus1_v6.1.0.55920.1_.png";
+        const string ExpandImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreePlus1_v6.1.0.55920.1_.png";
 
         #endregion
 
@@ -134,12 +136,6 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
                     e.Node.ChildNodes.Add(tNode);
                 }
             }
-            // using LINQ-expression
-            //foreach (TreeNode tNode in
-            //    doc.SelectNodes("//tcm:Item", _nsMgr).Cast<XmlElement>().Select(item => CreateTreeNode(item.GetAttribute("Title"), item.GetAttribute("ID"))).Where(tNode => tNode != null))
-            //{
-            //    e.Node.ChildNodes.Add(tNode);
-            //}
         }
 
         #endregion
@@ -262,11 +258,24 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
             }
         }
 
+        public override void Dispose()
+        {
+            if (_client.State == CommunicationState.Faulted)
+            {
+                _client.Abort();
+            }
+            else
+            {
+                _client.Close();
+            }
+            
+            base.Dispose();
+        }
+
         #endregion
 
         #region Private Members
-        //private CoreService2010Client _client;
-        private SessionAwareCoreService2010Client _client;
+        private SessionAwareCoreServiceClient _client;
         private List<ItemType> _selectedItemTypes;
         private List<ItemType> _showItemTypes;
         private string _tcmUrl;
@@ -321,9 +330,19 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
         /// </summary>
         private void Initialize()
         {
-            // default core service client uses application account, impersonation available in session aware client
-            //_client = new CoreService2010Client("basicHttp_2010");
-            _client = new SessionAwareCoreService2010Client("wsHttp_2010");
+            // use net.tcp core service client as we are on the machine itself
+            var endpoint = new EndpointAddress(ConfigurationManager.AppSettings["endpointAddress"]);
+            var binding = new NetTcpBinding
+            {
+                MaxReceivedMessageSize = 2147483647,
+                ReaderQuotas = new XmlDictionaryReaderQuotas
+                {
+                    MaxStringContentLength = 2147483647,
+                    MaxArrayLength = 2147483647
+                }
+            };
+            _client = new SessionAwareCoreServiceClient(binding, endpoint);
+            // impersonate core service call with currently logged on user
             if (!String.IsNullOrEmpty(LogonUser))
             {
                 _client.Impersonate(LogonUser);

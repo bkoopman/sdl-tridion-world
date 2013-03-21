@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,19 +13,21 @@
     <RootNamespace>SDLTridion.Examples.ItemSelector</RootNamespace>
     <AssemblyName>SDLTridion.Examples.ItemSelector</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,28 +63,22 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Tridion.Common, Version=3.0.0.211, Culture=neutral, PublicKeyToken=349a39f202fa9b53, processorArchitecture=MSIL">
+    <Reference Include="Tridion.Common, Version=7.0.0.142, Culture=neutral, PublicKeyToken=349a39f202fa9b53, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\References\cm2011\client\Tridion.Common.dll</HintPath>
+      <HintPath>..\..\..\Tridion\bin\client\Tridion.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.ContentManager.CoreService.Client, Version=7.0.0.2303, Culture=neutral, PublicKeyToken=ddfc895746e5ee6b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Tridion\bin\client\CoreService\Tridion.ContentManager.CoreService.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ItemSelector.aspx" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService.disco" />
-    <None Include="Service References\SDLTridionCoreServiceClient\configuration91.svcinfo" />
-    <None Include="Service References\SDLTridionCoreServiceClient\configuration.svcinfo" />
-    <None Include="Service References\SDLTridionCoreServiceClient\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="ItemSelectorPopup.htm" />
     <Content Include="js\PopupFunctions.js" />
     <Content Include="js\PopupInit.js" />
     <Content Include="UserControls\TridionTreeView.ascx" />
     <Content Include="Web.config" />
-    <None Include="Service References\SDLTridionCoreServiceClient\SDLTridion.Examples.ItemSelector.SDLTridionCoreServiceClient.IdentifiableObjectData1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ItemSelector.aspx.cs">
@@ -92,11 +89,6 @@
       <DependentUpon>ItemSelector.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\SDLTridionCoreServiceClient\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\TridionTreeView.ascx.cs">
       <DependentUpon>TridionTreeView.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,28 +98,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <None Include="Properties\PublishProfiles\SDL Tridion CMS.pubxml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\DataSources\System.Xml.Linq.XElement.datasource" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService.wsdl" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService1.wsdl" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService1.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService2.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService3.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService4.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService5.xsd" />
-    <None Include="Service References\SDLTridionCoreServiceClient\CoreService6.xsd" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SDLTridionCoreServiceClient\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
