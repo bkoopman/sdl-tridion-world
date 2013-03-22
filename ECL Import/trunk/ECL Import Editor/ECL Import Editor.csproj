@@ -45,6 +45,9 @@
     <None Include="Configuration\EclImportEditor.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Configuration\KeyValuePair.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="deploy.bat" />
   </ItemGroup>
   <ItemGroup>

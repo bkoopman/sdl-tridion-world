@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -74,7 +75,7 @@ namespace EclImport.Model.Services
         {
             string id = "tcm:0-0-0";
             IContentLibraryMultimediaItem eclItem = (IContentLibraryMultimediaItem)_eclContentLibraryContext.GetItem(eclUri);
-            string extension = eclItem.Filename.Substring(0, eclItem.Filename.LastIndexOf('.'));
+            string extension = eclItem.Filename.Substring(eclItem.Filename.LastIndexOf('.') + 1);
             MemoryStream ms = null;
             string tempPath;
             try
@@ -156,7 +157,7 @@ namespace EclImport.Model.Services
 
                 // find multimedia type
                 var list = client.GetSystemWideList(new MultimediaTypesFilterData());
-                var multimediaType = list.OfType<MultimediaTypeData>().Single(mt => mt.FileExtensions.Contains(extension.Substring(1)));
+                var multimediaType = list.OfType<MultimediaTypeData>().Single(mt => mt.FileExtensions.Contains(extension));
 
                 // set BinaryContent of a component
                 mmComponent.BinaryContent = new BinaryContentData
