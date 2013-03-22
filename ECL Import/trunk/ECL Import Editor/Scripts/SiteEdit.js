@@ -1,8 +1,8 @@
 var onDisplayStarted = function () {
     $evt.removeEventHandler($display, "start", onDisplayStarted);
+    //console.log("EclImport: inside onDisplayStarted");
 
     var view = $display.getView();
-
     if (view.getId && view.getId() == "EditorView") { // EditorView => SiteEdit dashboard
         //console.log("EclImport: inside EditorView");
         var parent = $('#CLinkPropertiesPage');
@@ -10,20 +10,18 @@ var onDisplayStarted = function () {
         var marker = $('#CLinkFieldDescriptionWrapper');
         var separator = $('#CLinkSeparator');
 
-        //<label>Import Item: </label>
+        //<label>Import multimedia content: </label>
         var label = document.createElement('label');
         label.innerHTML = 'Import multimedia content: ';
         label.setAttribute('style', 'min-height: 22px; padding: 5px;');
         parent.insertBefore(label, marker);
-        //console.log("EclImport: added label");
 
-        //<Button id="ImportEclItem" runat="server">Import</Button>
+        //<Button id="ImportEclItem" runat="server">Start</Button>
         var button = document.createElement('Button');
         button.setAttribute('id', 'ImportEclItem');
         button.setAttribute('runat', 'server');
-        button.textContent = "Import";
+        button.textContent = "Start";
         parent.insertBefore(button, marker);
-        //console.log("EclImport: added button");
 
         // read configuration for schemaid
         var editorsettings = $xml.toJson($xml.getNewXmlDocument($config.Editors["EclImport"].configuration));
@@ -44,10 +42,10 @@ var onDisplayStarted = function () {
                     locationId,
                     "tcm:" + publicationItemId + "-" + editorsettings.schemaid + "-8",
                     function (result) {
-                        console.log(result);
+                        //console.log(result);
                         progress.finish({ success: true });
                         // set the value from the result on the current field
-                        var value = result.split(',')[0].split(' ')[1]; // TODO: adapt to final result format
+                        var value = result.trim();
                         var item = $models.getItem(view.properties.selectedComponentId);
                         var fieldXpath = view._getSelectedFieldData().xpath;
                         view.applyFieldValue(item, fieldXpath, value, this);
@@ -79,9 +77,6 @@ var onDisplayStarted = function () {
                 //library.fireEvent("navigatetoitem", { itemId: "tcm:" + publicationItemId + "-" + editorsettings.folderid + "-2" });
             });
         });
-        // TODO: hide/disable the Import button on non-ECL items
-        //selectedMMCId = view._getSelectedFieldData().value;
-        //if (false === Tridion.OO.implementsInterface($models.getItem(selectedMMCId), "Tridion.ExternalContentLibrary.File")) return;
         $evt.addEventHandler(view, "propertiesboxshown", function () {
             if (view._getSelectedFieldData()) {
                 var selectedMMCId = view._getSelectedFieldData().value;

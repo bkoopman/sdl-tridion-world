@@ -1,0 +1,41 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tcmi="http://www.tridion.com/ContentManager/5.0/Instance" xmlns="" elementFormDefault="qualified">
+    <xsd:import namespace="http://www.tridion.com/ContentManager/5.0/Instance" schemaLocation="cm_xml_inst.xsd"></xsd:import>
+    <xsd:annotation>
+        <xsd:appinfo>
+            <tcm:Labels xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
+                <tcm:Label ElementName="key" Metadata="false">Key</tcm:Label>
+                <tcm:Label ElementName="value" Metadata="false">Value</tcm:Label>
+            </tcm:Labels>
+        </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType name="KeyValuePair">
+        <xsd:sequence>
+            <xsd:element name="key" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <ExtensionXml xmlns="http://www.tridion.com/ContentManager/5.0">
+                            <configuration xmlns="http://www.sdltridion.com/2011/SiteEdit">
+                                <field>
+                                    <editable>false</editable>
+                                </field>
+                            </configuration>
+                        </ExtensionXml>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" minOccurs="0" maxOccurs="1" type="xsd:normalizedString">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <ExtensionXml xmlns="http://www.tridion.com/ContentManager/5.0">
+                            <configuration xmlns="http://www.sdltridion.com/2011/SiteEdit">
+                                <field>
+                                    <editable>false</editable>
+                                </field>
+                            </configuration>
+                        </ExtensionXml>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
