@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
-using System.Xml;
 using System.Xml.Linq;
 using Tridion.ContentManager;
-using Tridion.ExternalContentLibrary.V2;
 using Tridion.ContentManager.CoreService.Client;
+using Tridion.ExternalContentLibrary.V2;
 
 namespace EclImport.Model.Services
 {
@@ -23,8 +21,6 @@ namespace EclImport.Model.Services
         private string _folderUri;
         private string _schemaUri;
         private IContentLibraryContext _eclContentLibraryContext;
-        private BasicHttpBinding _binding;
-        private EndpointAddress _endpoint;
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
@@ -33,19 +29,6 @@ namespace EclImport.Model.Services
             _folderUri = folderUri;
             _schemaUri = schemaUri;
             _username = ServiceSecurityContext.Current.WindowsIdentity.Name;
-            string uri = OperationContext.Current.Host.BaseAddresses[0].AbsoluteUri;
-            // uri starts with 'http://' or 'https://', so start looking for the "first" '/' at position 8
-            _endpoint = new EndpointAddress(uri.Substring(0, uri.IndexOf('/', 8)) + "/webservices/CoreService2012.svc/streamUpload_basicHttp");
-            _binding = new BasicHttpBinding
-            {
-                MaxReceivedMessageSize = 2147483647,
-                MessageEncoding = WSMessageEncoding.Mtom,
-                ReaderQuotas = new XmlDictionaryReaderQuotas
-                {
-                    MaxStringContentLength = 2147483647,
-                    MaxArrayLength = 2147483647
-                }
-            };
 
             // create new tcm session for current user, so we can create an ecl session to get the ecl item and read its content
             using (Session tcmSession = new Session(_username))
@@ -54,17 +37,18 @@ namespace EclImport.Model.Services
                 IEclUri eclUri = eclOrTcmUri.StartsWith("tcm:") ? eclSession.TryGetEclUriFromTcmUri(eclOrTcmUri) : eclSession.HostServices.CreateEclUri(eclOrTcmUri);
                 if (eclUri != null)
                 {
-                    _eclContentLibraryContext = eclSession.GetContentLibrary(eclUri);
-
-                    if (eclUri.ItemType == EclItemTypes.Folder)
+                    using (_eclContentLibraryContext = eclSession.GetContentLibrary(eclUri))
                     {
-                        // loop over all ECL items in this folder
-                        IFolderContent items = _eclContentLibraryContext.GetFolderContent(eclUri, 0, EclItemTypes.File);
-                        IList<string> ids = items.ChildItems.Select(item => ImportSingleItem(item.Id)).ToList();
-                        return string.Join(",", ids.ToArray());
-                    }
+                        if (eclUri.ItemType == EclItemTypes.Folder)
+                        {
+                            // loop over all ECL items in this folder
+                            IFolderContent items = _eclContentLibraryContext.GetFolderContent(eclUri, 0, EclItemTypes.File);
+                            IList<string> ids = items.ChildItems.Select(item => ImportSingleItem(item.Id)).ToList();
+                            return string.Join(",", ids.ToArray());
+                        }
 
-                    return ImportSingleItem(eclUri);
+                        return ImportSingleItem(eclUri);
+                    }
                 }
             }
 
@@ -103,10 +87,10 @@ namespace EclImport.Model.Services
                     }
                 }
 
-                // upload binary
-                using (StreamUploadClient streamUploadClient = new StreamUploadClient(_binding, _endpoint))
+                // upload binary (using netTcp binding as configured in SDL Tridion, because this Model extension is running inside the UI) 
+                using (StreamUploadClient suClient = new StreamUploadClient("streamUpload_netTcp_2012"))
                 {
-                    tempPath = streamUploadClient.UploadBinaryContent(eclItem.Filename, ms);
+                    tempPath = suClient.UploadBinaryContent(eclItem.Filename, ms);
                 }
             }
             finally
@@ -126,7 +110,7 @@ namespace EclImport.Model.Services
                 LocationInfo = new LocationInfo { OrganizationalItem = new LinkToOrganizationalItemData { IdRef = _folderUri } }
             };
 
-            // put binary data in tcm item
+            // put binary data in tcm item (using netTcp binding as configured in SDL Tridion, because this Model extension is running inside the UI) 
             using (SessionAwareCoreServiceClient client = new SessionAwareCoreServiceClient("netTcp_2012"))
             {
                 // impersonate with current user
@@ -195,9 +179,10 @@ namespace EclImport.Model.Services
         private static string GetNamespace(string xml)
         {
             // ecl metadata string looks like <Metadata xmlns="..">..</Metadata>
-            int start = xml.IndexOf("xmlns=\"");
-            int end = xml.IndexOf('\"', start + 7);
-            return xml.Substring(start + 7, end - start - 7);
+            const string nsAttribute = "xmlns=\"";
+            int start = xml.IndexOf(nsAttribute);
+            int end = xml.IndexOf('\"', start + nsAttribute.Length);
+            return xml.Substring(start + nsAttribute.Length, end - start - nsAttribute.Length);
         }
     }
 }
