@@ -61,7 +61,8 @@ namespace Example.EclProvider
                 return new List<IDisplayType>
                            {
                                HostServices.CreateDisplayType("set", "Flickr Set", EclItemTypes.Folder), 
-                               HostServices.CreateDisplayType("img", "Flickr Photo", EclItemTypes.File)
+                               HostServices.CreateDisplayType("img", "Flickr Photo", EclItemTypes.File),
+                               HostServices.CreateDisplayType("error", "", EclItemTypes.Folder)
                            };
             }
         }

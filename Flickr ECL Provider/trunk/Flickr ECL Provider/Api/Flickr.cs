@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -89,9 +90,8 @@ namespace Example.EclProvider.Api
         {
             const string getInfoMethod = "flickr.photos.getInfo";
             string url = string.Format("{0}?method={1}&api_key={2}&photo_id={3}&secret={4}", ApiUrl, getInfoMethod, ApiKey, id, secret);
-            string response = SubmitRequest(url);
+            XElement responseXml = SubmitRequest(url);
 
-            XElement responseXml = XElement.Parse(response);
             XElement photoElement = responseXml.Element("photo");
             if (photoElement != null)
             {
@@ -111,9 +111,8 @@ namespace Example.EclProvider.Api
         {
             const string getPhotosMethod = "flickr.photosets.getPhotos";
             string url = string.Format("{0}?method={1}&api_key={2}&photoset_id={3}&extras=path_alias,date_taken,last_update&media=photos", ApiUrl, getPhotosMethod, ApiKey, photoSetId);
+            XElement responseXml = SubmitRequest(url);
 
-            string response = SubmitRequest(url);
-            XElement responseXml = XElement.Parse(response);
             IEnumerable<XElement> photosetXml = responseXml.Elements("photoset");
             IEnumerable<XElement> photosXml = photosetXml.Elements("photo");
 
@@ -135,9 +134,7 @@ namespace Example.EclProvider.Api
         {
             const string getInfoMethod = "flickr.photosets.getInfo";
             string url = string.Format("{0}?method={1}&api_key={2}&photoset_id={3}", ApiUrl, getInfoMethod, ApiKey, photoSetId);
-
-            string response = SubmitRequest(url);
-            XElement xml = XElement.Parse(response);
+            XElement xml = SubmitRequest(url);
 
             XElement xmlPhotoSet = xml.Element("photoset");
             if (xmlPhotoSet != null)
@@ -157,9 +154,7 @@ namespace Example.EclProvider.Api
 
             const string getListMethod = "flickr.photosets.getList";
             string url = string.Format("{0}?method={1}&api_key={2}&user_id={3}", ApiUrl, getListMethod, ApiKey, UserId);
-
-            string response = SubmitRequest(url);
-            XElement xml = XElement.Parse(response);
+            XElement xml = SubmitRequest(url);
 
             IEnumerable<XElement> photosetsRoot = xml.Elements("photosets");
             foreach (XElement xmlPhotoSet in photosetsRoot.Elements("photoset"))
@@ -181,9 +176,8 @@ namespace Example.EclProvider.Api
         {
             const string getInfoMethod = "flickr.photos.getInfo";
             string url = string.Format("{0}?method={1}&api_key={2}&photo_id={3}&secret={4}", ApiUrl, getInfoMethod, ApiKey, photo.Id, photo.Secret);
-            string response = SubmitRequest(url);
+            XElement responseXml = SubmitRequest(url);
 
-            XElement responseXml = XElement.Parse(response);
             XElement photoElement = responseXml.Element("photo");
             if (photoElement != null)
             {
@@ -301,9 +295,10 @@ namespace Example.EclProvider.Api
         /// </summary>
         /// <param name="requestUrl">The URL to submit.</param>
         /// <returns>The content of the response.</returns>
-        private static string SubmitRequest(string requestUrl)
+        private static XElement SubmitRequest(string requestUrl)
         {
             string textResponse;
+            XElement xmlResponse;
             WebRequest request = WebRequest.Create(requestUrl);
             request.Proxy = null;
             using (WebResponse response = request.GetResponse())
@@ -316,7 +311,20 @@ namespace Example.EclProvider.Api
                     }
                 }
             }
-            return textResponse;
+            xmlResponse = XElement.Parse(textResponse);
+
+            if (xmlResponse.AttributeValueOrDefault("stat") != "ok")
+            {
+                if (xmlResponse.AttributeValueOrDefault("stat") == "fail")
+                {
+                    XElement error = xmlResponse.Element("err");
+                    if (error != null)
+                        throw new Exception(String.Format("Error while retrieving from Flickr; Error code {0}: {1}", error.AttributeValueOrDefault("code"), error.AttributeValueOrDefault("msg")));
+                }
+                throw new Exception("Error while retrieving from Flickr");
+            }
+
+            return xmlResponse;
         }
         #endregion
     }

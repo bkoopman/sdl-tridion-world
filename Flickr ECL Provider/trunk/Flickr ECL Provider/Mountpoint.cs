@@ -37,6 +37,12 @@ namespace Example.EclProvider
                 {
                     items.Add(new ListItem(parentFolderUri.PublicationId, info));
                 }
+
+                // oops, no photosets
+                if(items.Count == 0)
+                {
+                    items.Add(new ErrorListItem(parentFolderUri.PublicationId, "There are no public photo sets in this Flickr account."));
+                }
             }
             // only return files if they are requested (itemTypes is EclItemTypes.File))
             else if (parentFolderUri.ItemType == EclItemTypes.Folder && parentFolderUri.SubType == "set" && itemTypes.HasFlag(EclItemTypes.File))

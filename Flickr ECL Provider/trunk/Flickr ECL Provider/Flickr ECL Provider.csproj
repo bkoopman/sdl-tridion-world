@@ -61,6 +61,7 @@
     <Compile Include="Api\FlickrInfo.cs" />
     <Compile Include="Api\Flickr.cs" />
     <Compile Include="Api\PhotoSizeEnum.cs" />
+    <Compile Include="ErrorListItem.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\LinqXmlExtensions.cs" />
@@ -76,6 +77,9 @@
   <ItemGroup>
     <Content Include="Configuration\ExternalContentLibrary.xml">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Themes\_Default\Icons\error.16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Themes\_Default\Icons\flickr.16x16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
