@@ -57,7 +57,7 @@ namespace Example
             else
             {
                 // subscribe to component save for synchronous event (has performance impact on save, only use if custom code is fast)
-                EventSystem.Subscribe<Component, SaveEventArgs>(SetOrUpdateMetadata, EventPhases.Initiated);
+                EventSystem.Subscribe<Component, SaveEventArgs>(SetOrUpdateMetadata, EventPhases.Processed);
             }
         }
 
@@ -108,9 +108,10 @@ namespace Example
                                                 }
                                                 ((SingleLineTextField) metadataFields[_metadataXmlFieldName]).Value = value;
                                                 subject.Metadata = metadataFields.ToXml();
+                                                subject.Save();
                                                 if (_asynchronous)
                                                 {
-                                                    subject.Save(true);
+                                                    subject.CheckIn();
                                                 }
 
                                                 Logger.Write(string.Format("added {0} to metadata of {1}", value, eclUri), "EclStubComponentEventHandlerExtension", LoggingCategory.General, TraceEventType.Information);
