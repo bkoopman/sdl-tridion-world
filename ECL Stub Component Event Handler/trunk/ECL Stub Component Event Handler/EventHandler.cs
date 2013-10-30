@@ -64,7 +64,7 @@ namespace Example
         private void SetOrUpdateMetadata(Component subject, EventArgs args, EventPhases phase)
         {
             // quick first test for ECL stub Component
-            if (!subject.Title.StartsWith("ecl:") || subject.Schema.Purpose != SchemaPurpose.Multimedia) return;
+            if (!subject.Title.StartsWith("ecl:") || subject.ComponentType != ComponentType.Multimedia) return;
 
             using (IEclSession eclSession = SessionFactory.CreateEclSession(subject.Session))
             {
