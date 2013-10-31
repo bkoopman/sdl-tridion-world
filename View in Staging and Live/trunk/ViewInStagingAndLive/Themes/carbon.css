@@ -1,0 +1,22 @@
+﻿/* large ribbon button image, only for live in xpm */
+.ribbontoolbar .button.ViewLive .image, 
+.ribbontoolbar .button.ViewLive.ribbonitem .image
+{
+	background-image: url({ThemePath}Icons/live.32x32.png);
+}
+
+/* small ribbon button image */
+.contextmenu .item.ViewStaging .image, 
+.ribbontoolbar .button.ViewStaging.ribbonitem.smallbutton .image, 
+.ribbontoolbar.minimized .button.ViewStaging .image, 
+.ribbontoolbar.minimized .button.ViewStaging.ribbonitem .image
+{
+	background-image: url({ThemePath}Icons/staging.16x16.png);
+}
+.contextmenu .item.ViewLive .image, 
+.ribbontoolbar .button.ViewLive.ribbonitem.smallbutton .image, 
+.ribbontoolbar.minimized .button.ViewLive .image, 
+.ribbontoolbar.minimized .button.ViewLive.ribbonitem .image
+{
+	background-image: url({ThemePath}Icons/live.16x16.png);
+}

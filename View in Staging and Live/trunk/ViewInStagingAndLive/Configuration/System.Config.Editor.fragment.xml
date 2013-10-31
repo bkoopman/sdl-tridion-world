@@ -1,0 +1,8 @@
+﻿<!-- This configuration fragment is intended to be inserted into
+     the Tridion.Web.UI system configuration (this is the Editor registration fragment)
+     This fragment should be placed inside the "/configuration/editors" element -->
+<editor name="ViewInStagingAndLive">
+  <installpath>C:\Tridion\web\WebUI\Editors\ViewInStagingAndLive</installpath>
+  <configuration>Configuration\ViewInStagingAndLive.config</configuration>
+  <vdir>ViewInStagingAndLive</vdir>
+</editor>

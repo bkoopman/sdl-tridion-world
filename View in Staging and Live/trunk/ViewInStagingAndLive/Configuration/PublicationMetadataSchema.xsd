@@ -1,0 +1,43 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sdltridion.com/Schemas/PublicationMetadata" xmlns:tcmi="http://www.tridion.com/ContentManager/5.0/Instance" elementFormDefault="qualified" targetNamespace="http://sdltridion.com/Schemas/PublicationMetadata">
+  <xsd:import namespace="http://www.tridion.com/ContentManager/5.0/Instance" schemaLocation="cm_xml_inst.xsd"></xsd:import>
+  <xsd:annotation>
+    <xsd:appinfo>
+      <tcm:Labels xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
+        <tcm:Label ElementName="stagingSiteUrl" Metadata="true">Staging Site URL</tcm:Label>
+        <tcm:Label ElementName="liveSiteUrl" Metadata="true">Live Site URL</tcm:Label>
+      </tcm:Labels>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element name="Metadata">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="stagingSiteUrl" minOccurs="0" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <ExtensionXml xmlns="http://www.tridion.com/ContentManager/5.0">
+                <configuration xmlns="http://www.sdltridion.com/2011/SiteEdit">
+                  <field>
+                    <editable>true</editable>
+                  </field>
+                </configuration>
+              </ExtensionXml>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="liveSiteUrl" minOccurs="0" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <ExtensionXml xmlns="http://www.tridion.com/ContentManager/5.0">
+                <configuration xmlns="http://www.sdltridion.com/2011/SiteEdit">
+                  <field>
+                    <editable>true</editable>
+                  </field>
+                </configuration>
+              </ExtensionXml>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
