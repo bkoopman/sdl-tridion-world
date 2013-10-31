@@ -1,6 +1,5 @@
 ﻿using Tridion.Web.UI.Core;
 using Tridion.Web.UI.Controls;
-using Tridion.Web.UI.Core.Controls;
 
 namespace ViewInStagingAndLive.UI.Editor.Controls
 {
