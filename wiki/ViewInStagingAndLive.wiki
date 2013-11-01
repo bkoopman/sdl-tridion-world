@@ -1,10 +1,8 @@
-#summary One-sentence summary of this page.
-
-#summary 2013 UI extension which adds import capabilities for ECL items.
+#summary 2013 UI extension allowing to view any Page in the CMS on the Staging and Live websites.
 
 = Introduction =
 
-This eXtension allows you to view any Page in the CMS on the Staging and Live websites without having to know the exact URL.
+This eXtension allows you to view any Page in the CMS on the Staging and Live websites with the click of a button, without having to know the exact URL.
 
 
 = Details =
