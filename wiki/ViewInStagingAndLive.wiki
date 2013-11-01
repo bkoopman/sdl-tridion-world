@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+#summary 2013 UI extension which adds import capabilities for ECL items.
+
+= Introduction =
+
+This eXtension allows you to view any Page in the CMS on the Staging and Live websites without having to know the exact URL.
+
+
+= Details =
+
+All is explained on SDL Tridion World - http://www.sdltridionworld.com/community/2011_extensions/view_in_staging_live.aspx
