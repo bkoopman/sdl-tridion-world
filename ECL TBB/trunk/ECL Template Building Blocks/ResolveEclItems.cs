@@ -1006,8 +1006,8 @@ namespace Example.Ecl.TBBs
 
         /// <summary>
         /// In order to improve performance we use FileStream so while publishing, the TBB will create files in Temp folder of current process user.
-        /// This files exists only while publishing and will be deleted automatically.
-        /// So the publishing process user needs access to its Temp directory.
+        /// These files exist only while publishing and will be deleted automatically.
+        /// The publishing process user will need access to its Temp directory.
         /// </summary>
         /// <returns>A temporary FileStream</returns>
         private static Stream CreateTemporaryFileStream()
