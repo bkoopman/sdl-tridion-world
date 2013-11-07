@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Xml;
 using Tridion.ContentManager;
 using Tridion.ContentManager.CommunicationManagement;
@@ -33,6 +35,7 @@ namespace Example.Ecl.TBBs
         private const string ParameterNameTargetStructureGroup = "sg_TargetStructureGroup";
         private const string ParameterNameItemName = "ItemName";
 
+        // template builder log
         private static readonly TemplatingLogger Log = TemplatingLogger.GetLogger(typeof(ResolveEclItems));
 
         #region attributes regular expressions
@@ -75,11 +78,6 @@ namespace Example.Ecl.TBBs
         private const string AttributeTridionTypePage = "Page";
 
         /// <summary>
-        /// type attribute value for binary-links
-        /// </summary>
-        private const string AttributeTridionTypeMultimedia = "Multimedia";
-
-        /// <summary>
         /// Attribute name for the attribute the eventual link value should be placed in
         /// </summary>
         private const string AttributeNameTargetAttribute = "targetattribute";
@@ -88,6 +86,16 @@ namespace Example.Ecl.TBBs
         /// Attribute name for the attribute with the anchor to use in a link.
         /// </summary>
         private const string AttributeNameTridionAnchor = "anchor";
+
+        /// <summary>
+        /// Attribute name for the variantid attribute to use in a image.
+        /// </summary>
+        private const string AttributeNameTridionVariantid = "variantid";
+
+        /// <summary>
+        /// Default variant id for (published) ECL items
+        /// </summary>
+        private const string DefaultVariantId = "ECL_default";
         #endregion
 
         // keep some member variables to prevent passing around too many arguments between methods
@@ -101,22 +109,17 @@ namespace Example.Ecl.TBBs
         // The text is changed in the variable as the processing is executed.
         private string _text;
 
+        /// <summary>
+        /// ITemplate.Transform implementation
+        /// </summary>
+        /// <param name="engine">The engine can be used to retrieve additional information or execute additional actions</param>
+        /// <param name="package">The package provides the primary data for the template, and acts as the output</param>
         public void Transform(Engine engine, Package package)
         {
             _engine = engine;
             _package = package;
 
-            // determine context publication id
-            if (_package.GetByType(ContentType.Page) != null)
-            {
-                // assuming page in package is current item
-                _publicationId = _engine.GetObject(_package.GetByType(ContentType.Page).GetAsSource().GetValue("ID")).Id.PublicationId;
-            }
-            else
-            {
-                // assuming component in package is current item
-                _publicationId = _engine.GetObject(_package.GetByType(ContentType.Component).GetAsSource().GetValue("ID")).Id.PublicationId;
-            }
+            _publicationId = GetPublicationId();
 
             // determine (optional) structure group parameter
             Item targetStructureGroupItem = _package.GetByName(ParameterNameTargetStructureGroup);
@@ -182,7 +185,7 @@ namespace Example.Ecl.TBBs
                 {
                     // Assume text content
                     string inputToConvert = selectedItem.GetAsString();
-                    string convertedOutput = ResolveEclLinks(inputToConvert);
+                    string convertedOutput = ResolveEclLinks(eclSession, inputToConvert);
                     if (convertedOutput != null)
                     {
                         Log.Debug("Changed Output item");
@@ -193,11 +196,69 @@ namespace Example.Ecl.TBBs
                 {
                     // XML
                     XmlDocument outputDocument = selectedItem.GetAsXmlDocument();
-                    ResolveEclLinks(outputDocument);
+                    ResolveEclLinks(eclSession, outputDocument);
                     selectedItem.SetAsXmlDocument(outputDocument);
                 }
             }
         }
+
+        /// <summary>
+        /// Get Publication ID for current item
+        /// </summary>
+        /// <returns>Publication ID</returns>
+        private int GetPublicationId()
+        {
+            // if it's a new page or component (not yet saved) the TCMURI will be the null URI, so fall back to look for the template URI in this case.
+            int result;
+            if (TryGetPublicationId(ContentType.Page, out result) ||
+                TryGetPublicationId(ContentType.Component, out result) ||
+                TryGetPublicationId(ContentType.Template, out result))
+            {
+                return result;
+            }
+            throw new Exception("Unable to determine publication ID");
+        }
+
+        /// <summary>
+        /// Get Publication ID for specified ContentType
+        /// </summary>
+        /// <param name="contentTypeToGetPublicationIdFrom">specified ContentType</param>
+        /// <param name="publicationId">When this method returns, contains the Publication ID if successful or zero when failed</param>
+        /// <returns>true if Publication ID could be determined; otherwise, false</returns>
+        private bool TryGetPublicationId(ContentType contentTypeToGetPublicationIdFrom, out int publicationId)
+        {
+            publicationId = 0;
+
+            var item = _package.GetByType(contentTypeToGetPublicationIdFrom);
+            if (item == null)
+            {
+                return false;
+            }
+
+            string id = item.GetAsSource().GetValue("ID");
+            if (!TcmUri.IsValid(id))
+            {
+                return false;
+            }
+
+            TcmUri tcmUri = new TcmUri(id);
+            if (TcmUri.IsNullOrUriNull(tcmUri))
+            {
+                return false;
+            }
+
+            if (tcmUri.ItemType == ItemType.Publication)
+            {
+                publicationId = tcmUri.ItemId;
+            }
+            else
+            {
+                publicationId = tcmUri.PublicationId;
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// Resolve and possibly publish an ECL item
@@ -206,10 +267,8 @@ namespace Example.Ecl.TBBs
         /// <param name="attributes">template atrributes</param>
         /// <param name="variantId">variant id</param>
         /// <param name="targetStructureGroup">target Structure Group to publish too (when null, Image Structure Group from Publication will be used</param>
-        /// <param name="targetAttribute">name of target attribute in tag (usually src or href)</param>
-        /// <param name="publishPath">return template fragment or publish path</param>
-        /// <returns>template fragment for (published) ECL item or publish path when publishPath = true</returns>
-        private string ResolveEclItem(EclItemInPackage eclItemInPackage, IList<ITemplateAttribute> attributes, string variantId, StructureGroup targetStructureGroup, string targetAttribute, bool publishPath = false)
+        /// <returns>tridion publish path or external link</returns>
+        private string ResolveEclItem(EclItemInPackage eclItemInPackage, IList<ITemplateAttribute> attributes, string variantId, StructureGroup targetStructureGroup)
         {
             // determine if item is already published or if we should get the content for it and let tridion publish it
             string publishedPath = eclItemInPackage.EclItem.GetDirectLinkToPublished(attributes);
@@ -218,68 +277,74 @@ namespace Example.Ecl.TBBs
             {
                 // tridion must publish this ecl item as a variant 
                 Component component = (Component)_engine.GetSession().GetObject(eclItemInPackage.StubUri);
-                // get the content and create a filename with size and a proper extension
+
+                // create a filename with size and a proper extension
                 string filename = ConstructFileName(eclItemInPackage.EclItem.Filename, variantId, eclItemInPackage.EclUri.ToString());
-                IContentResult content = eclItemInPackage.EclItem.GetContent(attributes);
                 Binary publishedEclItem;
 
-                if (targetStructureGroup == null)
+                // get content as stream
+                Stream contentStream = eclItemInPackage.PackageItem.GetAsStream();
+                string contentType = eclItemInPackage.EclItem.MimeType;
+                using (contentStream)
                 {
-                    Log.Info(string.Format("publishing ECL item of type {0}", content.ContentType));
-                    if (!content.Stream.CanSeek)
+                    // a provider (like the ADAM provider) can return an empty stream when requested without attributes
+                    // in that case we should resolve the item with its size taken into consideration
+                    // so here we ask for the content again passing width and height in attributes
+                    if (contentStream.Length == 0)
                     {
-                        // create a seekable copy of the content stream
-                        using (MemoryStream stream = new MemoryStream())
+                        using (Stream stream = CreateTemporaryFileStream())
                         {
+                            IContentResult content = eclItemInPackage.EclItem.GetContent(attributes);
                             content.Stream.CopyTo(stream);
-                            publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(stream, filename, variantId, component, content.ContentType);
+                            publishedEclItem = AddBinary(stream, variantId, contentType, filename, component, targetStructureGroup);
                         }
                     }
                     else
                     {
-                        publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(content.Stream, filename, variantId, component, content.ContentType);
+                        publishedEclItem = AddBinary(contentStream, variantId, contentType, filename, component, targetStructureGroup);
                     }
                 }
-                else
-                {
-                    Log.Info(string.Format("publishing ECL item of type {0} to Structure Group: {1}", content.ContentType, targetStructureGroup.Id));
-                    if (!content.Stream.CanSeek)
-                    {
-                        // create a seekable copy of the content stream
-                        using (MemoryStream stream = new MemoryStream())
-                        {
-                            content.Stream.CopyTo(stream);
-                            publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(stream, filename, targetStructureGroup, variantId, component, content.ContentType);
-                        }
-                    }
-                    else
-                    {
-                        publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(content.Stream, filename, targetStructureGroup, variantId, component, content.ContentType);
-                    }
-                }
+
                 // we could consider updating the package item with the content and the file extension, but to change the content type, we have to recreate it
                 // this won't be of much use other than getting the content stream twice (performance impact) as the package item will (or should) not be used after this anymore
-                //eclItemInPackage.PackageItem.SetAsStream(content.Stream);
-                //eclItemInPackage.PackageItem.Properties[Item.ItemPropertyFileNameExtension] = DetermineExtension(eclItemInPackage.MimeType);
 
                 // set published path in package item and add to attributes
                 eclItemInPackage.PackageItem.Properties[Item.ItemPropertyPublishedPath] = publishedEclItem.Url;
-                attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>(targetAttribute, publishedEclItem.Url)));
+                return publishedEclItem.Url;
+            }
+
+            // ecl item is already published, lets set the uri that can be used from a public website to link directly to the item on the external system
+            eclItemInPackage.PackageItem.Properties[Item.ItemPropertyPublishedPath] = publishedPath;
+            Log.Info(string.Format("resolved ECL item with path {0}", publishedPath));
+            return publishedPath;
+        }
+
+        /// <summary>
+        /// Adds binary data as a Stream to the collection of binaries of the RenderedItem. 
+        /// It will be published to the specified location with the specified filename. 
+        /// The binary can be identified by the specified variantId and is related to a Component.  
+        /// </summary>
+        /// <param name="stream">A Stream holding the content of the binary</param>
+        /// <param name="variantId">A String holding an identifier for the binary</param>
+        /// <param name="contentType">The MIME type of the content</param>
+        /// <param name="filename">A String holding the file name of the binary</param>
+        /// <param name="component">A Component that is related to this binary (e.g. the binary comes from a ECL stub Component)</param>
+        /// <param name="targetStructureGroup">A optional StructureGroup holding the path to which the binary will be published</param>
+        /// <returns>A Binary instance</returns>
+        private Binary AddBinary(Stream stream, string variantId, string contentType, string filename, Component component, StructureGroup targetStructureGroup)
+        {
+            Binary publishedEclItem;
+            if (targetStructureGroup == null)
+            {
+                Log.Info(string.Format("publishing ECL item of type {0}", contentType));
+                publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(stream, filename, variantId, component, contentType);
             }
             else
             {
-                // ecl item is already published, lets set the uri that can be used from a public website to link directly to the item on the external system
-                eclItemInPackage.PackageItem.Properties[Item.ItemPropertyPublishedPath] = publishedPath;
-                Log.Info(string.Format("resolved ECL item with path {0}", publishedPath));
+                Log.Info(string.Format("publishing ECL item of type {0} to Structure Group: {1}", contentType, targetStructureGroup.Id));
+                publishedEclItem = _engine.PublishingContext.RenderedItem.AddBinary(stream, filename, targetStructureGroup, variantId, component, contentType);
             }
-
-            if (publishPath)
-            {
-                return publishedPath;
-            }
-
-            // return the template fragment which should replace the original one in the Output
-            return eclItemInPackage.EclItem.GetTemplateFragment(attributes);
+            return publishedEclItem;
         }
 
         /// <summary>
@@ -293,7 +358,7 @@ namespace Example.Ecl.TBBs
         {
             // set defaults
             string extension = "bin";
-            eclUri = eclUri.Replace("ecl:", string.Empty);
+            var eclUriHashCode = eclUri.Replace("ecl:", string.Empty).GetHashCode().ToString(CultureInfo.InvariantCulture);
 
             // determine filename and extension
             if (!string.IsNullOrEmpty(originalFilename) && originalFilename.Contains("."))
@@ -306,50 +371,52 @@ namespace Example.Ecl.TBBs
             }
 
             // build filename for empty variant
-            if (string.IsNullOrEmpty(variantId) || variantId.Equals("x"))
+            if (string.IsNullOrEmpty(variantId) || variantId.Equals(DefaultVariantId))
             {
                 if (string.IsNullOrEmpty(originalFilename))
                 {
-                    return string.Format("{0}.{1}", eclUri, extension);
+                    return string.Format("{0}.{1}", eclUriHashCode, extension);
                 }
-                return string.Format("{0}_{1}.{2}", originalFilename, eclUri, extension);
+                return string.Format("{0}_{1}.{2}", originalFilename, eclUriHashCode, extension);
             }
 
             // build filename for empty original filename
             if (string.IsNullOrEmpty(originalFilename))
             {
-                return string.Format("{0}_{1}.{2}", eclUri, variantId, extension);
+                return string.Format("{0}_{1}.{2}", eclUriHashCode, variantId, extension);
             }
 
             // build full filename
-            return string.Format("{0}_{1}_{2}.{3}", originalFilename, eclUri, variantId, extension);
+            return string.Format("{0}_{1}_{2}.{3}", originalFilename, eclUriHashCode, variantId, extension);
         }
 
         /// <summary>
         /// Perform the actual function of this template, by iterating over all tags with tridion:href attributes in them and see if they belong to an ECL item.
         /// </summary>
+        /// <param name="eclSession">The ECL Session provides access to the external items. </param>
         /// <param name="text">The text to process</param>
         /// <returns>The processed text (also stored in the member field)</returns>
-        private string ResolveEclLinks(string text)
+        private string ResolveEclLinks(IEclSession eclSession, string text)
         {
             _text = text;
             string[] outputContainer = new[] { _text };
             foreach (Match matchingElement in TemplateUtilities.GetRegexMatches(outputContainer, TridionHrefExpression))
             {
                 Log.Debug("Processing ECL link text");
-                outputContainer[0] = ProcessEclLink(matchingElement);
+                outputContainer[0] = ProcessEclLink(eclSession, matchingElement);
             }
 
             // Process CSS references
-            _text = ReplaceCssReferencesInText(_text);
+            _text = ReplaceCssReferencesInText(eclSession, _text);
             return _text;
         }
 
         /// <summary>
         /// Perform the actual function of this template, by iterating over all tags with tridion:href attributes in them and see if they belong to an ECL item.
         /// </summary>
+        /// <param name="eclSession">The ECL Session provides access to the external items. </param>
         /// <param name="document">The template document to process</param>
-        private void ResolveEclLinks(XmlNode document)
+        private void ResolveEclLinks(IEclSession eclSession, XmlNode document)
         {
             XmlNodeList foundLinkNodes = TemplateUtilities.SelectNodes(document, "//*[@tridion:href]");
             foreach (XmlNode foundLinkNode in foundLinkNodes)
@@ -361,26 +428,13 @@ namespace Example.Ecl.TBBs
                 EclItemInPackage item;
                 if (_eclItemsInPackage.TryGetValue(linkInfo.TargetUri, out item))
                 {
-                    // parse remaining attributes to determine width and height 
-                    IDictionary<string, string> remainingAttributes = new Dictionary<string, string>();
-                    string width;
-                    string height;
-                    ParseRemainingAttributes(linkInfo.RemainingAttributes, remainingAttributes, out width, out height);
-
-                    // convert remaining attributes into IList<ITemplateAttribute>
-                    IList<ITemplateAttribute> attributes = new List<ITemplateAttribute>();
-                    foreach (var attribute in remainingAttributes)
+                    string linkReplacementString = RenderEclItem(linkInfo, item);
+                    if (!string.IsNullOrEmpty(linkReplacementString))
                     {
-                        attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>(attribute.Key, attribute.Value)));
+                        Log.Debug("Constructed link: " + linkReplacementString);
+                        // replacing the link node with the constructed output text
+                        ReplaceLinkNodeWithEclNode(foundLinkNode, linkReplacementString);
                     }
-
-                    // resolve (possibly publish) ECL item
-                    string variantId = string.Format("{0}x{1}", width.Trim(), height.Trim());
-                    string linkReplacementString = ResolveEclItem(item, attributes, variantId, _targetStructureGroup, linkInfo.TargetAttribute);
-
-                    Log.Debug("Constructed link: " + linkReplacementString);
-                    // replacing the link node with the constructed output text
-                    ReplaceLinkNodeWithEclNode(foundLinkNode, linkReplacementString);
                 }
             }
 
@@ -389,9 +443,81 @@ namespace Example.Ecl.TBBs
             foreach (XmlNode styleElement in styleElements)
             {
                 string styleContent = styleElement.InnerXml;
-                styleContent = ReplaceCssReferencesInText(styleContent);
+                styleContent = ReplaceCssReferencesInText(eclSession, styleContent);
                 styleElement.InnerXml = styleContent;
             }
+        }
+
+        /// <summary>
+        /// Render and possibly publish an ECL item
+        /// </summary>
+        /// <param name="linkInfo">Parsed link info</param>
+        /// <param name="item">EclItemInPackage object</param>
+        /// <returns>template fragment for (published) ECL item or fragment with external link</returns>
+        private string RenderEclItem(ParsedLinkInfo linkInfo, EclItemInPackage item)
+        {
+            // parse remaining attributes to determine width and height 
+            IDictionary<string, string> remainingAttributes = new Dictionary<string, string>();
+            string width;
+            string height;
+            ParseRemainingAttributes(linkInfo.RemainingAttributes, remainingAttributes, out width, out height);
+
+            // convert remaining attributes into IList<ITemplateAttribute>
+            IList<ITemplateAttribute> attributes = new List<ITemplateAttribute>();
+            foreach (var attribute in remainingAttributes)
+            {
+                attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>(attribute.Key, attribute.Value)));
+            }
+
+            // we need a variantId because we could have to publish the ECL item using AddBinary  
+            string variantId = DefaultVariantId;
+            if (!string.IsNullOrEmpty(linkInfo.VariantId))
+            {
+                variantId = linkInfo.VariantId;
+            }
+            else if (!(string.IsNullOrEmpty(width) && !(string.IsNullOrEmpty(height))))
+            {
+                variantId = string.Format("{0}x{1}", width, height);
+            }
+
+            string itemUrl = ResolveEclItem(item, attributes, variantId, _targetStructureGroup);
+            attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>(linkInfo.TargetAttribute, itemUrl)));
+
+            if (linkInfo.LinkElementName.ToUpperInvariant() == "IMG")
+            {
+                string embedFragment = item.EclItem.GetTemplateFragment(attributes);
+                if (!string.IsNullOrEmpty(embedFragment))
+                {
+                    // if provider can embed item we return embed fragment
+                    return embedFragment;
+                }
+
+                string externalLink = item.EclItem.GetDirectLinkToPublished(attributes);
+
+                if (!string.IsNullOrEmpty(externalLink))
+                {
+                    StringBuilder result = new StringBuilder();
+
+                    result.AppendFormat("<img ");
+                    foreach (var att in attributes)
+                    {
+                        string value = att.Value;
+                        if (att.Name.ToUpperInvariant() == "ALT")
+                        {
+                            value = item.EclItem.Title;
+                        }
+
+                        result.AppendFormat(" {0}=\"{1}\"", att.Name, HttpUtility.HtmlAttributeEncode(value));
+                    }
+
+                    result.AppendFormat(" />");
+                    return result.ToString();
+                }
+            }
+
+            // All <a> links and images that do not need special treatment processed by default finish actions
+            // because we already resolve Ecl items with ResolveEclItem
+            return null;
         }
 
         /// <summary>
@@ -417,9 +543,10 @@ namespace Example.Ecl.TBBs
         /// if tag belongs to an ECL item, replace it with the result from IContentLibraryMultimediaItem.GetTemplateFragment(attributes)
         /// The changes are made directly on the _text class member variable.
         /// </summary>
+        /// <param name="eclSession">The ECL Session provides access to the external items. </param>
         /// <param name="matchingTag">A matching start-tag (so not the full tag) which contains at least a tridion:href attribute</param>
         /// <returns>The altered overall text</returns>
-        private string ProcessEclLink(Match matchingTag)
+        private string ProcessEclLink(IEclSession eclSession, Match matchingTag)
         {
             Group foundMatch = matchingTag.Groups["tagwithlink"];
             string elementName = matchingTag.Groups["tagname"].ToString();
@@ -438,7 +565,7 @@ namespace Example.Ecl.TBBs
             }
 
             // retrieve link information from the html tag fragment
-            ParsedLinkInfo linkInfo = ParseLinkInfo(elementName, hyperLinkText, endStartTag);
+            ParsedLinkInfo linkInfo = ParseLinkInfo(eclSession, elementName, hyperLinkText, endStartTag);
 
             // check if link belongs to ECL item in package
             EclItemInPackage item;
@@ -450,26 +577,14 @@ namespace Example.Ecl.TBBs
                     linkInfo.RemainingAttributes = linkInfo.RemainingAttributes.Replace("xmlns:tridion=&quot;http://www.tridion.com/ContentManager/5.0&quot;", string.Empty).Replace("xmlns:tridion=\"http://www.tridion.com/ContentManager/5.0\"", string.Empty);
                 }
 
-                // parse remaining attributes to determine width and height 
-                IDictionary<string, string> remainingAttributes = new Dictionary<string, string>();
-                string width;
-                string height;
-                ParseRemainingAttributes(linkInfo.RemainingAttributes, remainingAttributes, out width, out height);
+                string linkReplacementString = RenderEclItem(linkInfo, item);
 
-                // convert remaining attributes into IList<ITemplateAttribute>
-                IList<ITemplateAttribute> attributes = new List<ITemplateAttribute>();
-                foreach (var attribute in remainingAttributes)
+                if (!string.IsNullOrEmpty(linkReplacementString))
                 {
-                    attributes.Add(new NodeKeyValuePair(new KeyValuePair<string, string>(attribute.Key, attribute.Value)));
+                    Log.Debug("Constructed link text: " + linkReplacementString);
+                    // alter the text output being processed, replacing the input link fragment by the constructed output text
+                    _text = _text.Substring(0, tagStartPosition) + linkReplacementString + _text.Substring(tagStartPosition + tagLength);
                 }
-
-                // resolve (possibly publish) ECL item
-                string variantId = string.Format("{0}x{1}", width.Trim(), height.Trim());
-                string linkReplacementString = ResolveEclItem(item, attributes, variantId, _targetStructureGroup, linkInfo.TargetAttribute);
-
-                Log.Debug("Constructed link text: " + linkReplacementString);
-                // alter the text output being processed, replacing the input link fragment by the constructed output text
-                _text = _text.Substring(0, tagStartPosition) + linkReplacementString + _text.Substring(tagStartPosition + tagLength);
             }
             return _text;
         }
@@ -519,9 +634,10 @@ namespace Example.Ecl.TBBs
         /// <summary>
         /// Find all CSS URL references containing ECL URIs in an input text, and replace them with their string value.
         /// </summary>
+        /// <param name="eclSession">The ECL Session provides access to the external items. </param>
         /// <param name="inputText">The text to process</param>
         /// <returns>The input, with CSS URL references containing ECL URIs replaced by their published paths (or error messages if they could not be resolved)</returns>
-        private string ReplaceCssReferencesInText(string inputText)
+        private string ReplaceCssReferencesInText(IEclSession eclSession, string inputText)
         {
             string[] outputContainer = new[] { inputText };
             foreach (Match matchingUrl in TemplateUtilities.GetRegexMatches(outputContainer, EclUriCssUrlExpression))
@@ -531,22 +647,18 @@ namespace Example.Ecl.TBBs
                 Log.Debug("Processing CSS URL reference for " + eclUri);
                 if (eclUri.StartsWith("ecl:"))
                 {
-                    // resolve into stub uri
-                    using (IEclSession eclSession = SessionFactory.CreateEclSession(_engine.GetSession()))
-                    {
-                        eclUri = eclSession.GetOrCreateTcmUriFromEclUri(eclSession.HostServices.CreateEclUri(eclUri));
-                    }
+                    eclUri = eclSession.GetOrCreateTcmUriFromEclUri(eclSession.HostServices.CreateEclUri(eclUri));
                 }
                 if (!TcmUri.IsValid(eclUri))
                 {
-                    throw new TemplatingException(string.Format("Could not process url value '{0}' into uri", eclUri));
+                    throw new Exception(string.Format("Could not process url value '{0}' into uri", eclUri));
                 }
                 string targetUrl = eclUri;
                 EclItemInPackage item;
                 if (_eclItemsInPackage.TryGetValue(new TcmUri(eclUri), out item))
                 {
                     // resolve (possibly publish) ECL item
-                    targetUrl = ResolveEclItem(item, new List<ITemplateAttribute>(), string.Empty, _targetStructureGroup, "url", true);
+                    targetUrl = ResolveEclItem(item, new List<ITemplateAttribute>(), string.Empty, _targetStructureGroup);
                 }
 
                 inputText = inputText.Substring(0, eclUriGroup.Index) + targetUrl + inputText.Substring(eclUriGroup.Index + eclUriGroup.Length);
@@ -688,11 +800,12 @@ namespace Example.Ecl.TBBs
         /// <summary>
         /// Distill all useful information of a hyperlink string, and put the found data in a ParsedLinkInfo structure
         /// </summary>
+        /// <param name="eclSession">The ECL Session provides access to the external items. </param>
         /// <param name="elementName">The name of the element being processed</param>
         /// <param name="hyperLinkText">The full tag to parse.</param>
         /// <param name="endStartTag">Within the hyperLinkText, where end-tag ends</param>
         /// <returns>A newly created ParsedLinkInfo object with all the found information filled out</returns>
-        private ParsedLinkInfo ParseLinkInfo(string elementName, string hyperLinkText, int endStartTag)
+        private ParsedLinkInfo ParseLinkInfo(IEclSession eclSession, string elementName, string hyperLinkText, int endStartTag)
         {
             string elementStartTagOpen = "<" + elementName;
             ParsedLinkInfo linkInfo = new ParsedLinkInfo();
@@ -700,6 +813,8 @@ namespace Example.Ecl.TBBs
             // Determine hyperlink parts
             string startTag = hyperLinkText.Substring(0, endStartTag + 1);
             string startTagAttributes = hyperLinkText.Substring(elementStartTagOpen.Length, endStartTag - elementStartTagOpen.Length);
+
+            linkInfo.LinkElementName = elementName;
 
             // Process attributes
             IDictionary<string, string> tridionAttributes = new Dictionary<string, string>();
@@ -717,14 +832,11 @@ namespace Example.Ecl.TBBs
             if (targetUriString.StartsWith("ecl:"))
             {
                 // resolve into stub uri
-                using (IEclSession eclSession = SessionFactory.CreateEclSession(_engine.GetSession()))
-                {
-                    targetUriString = eclSession.GetOrCreateTcmUriFromEclUri(eclSession.HostServices.CreateEclUri(targetUriString));
-                }
+                targetUriString = eclSession.GetOrCreateTcmUriFromEclUri(eclSession.HostServices.CreateEclUri(targetUriString));
             }
             if (!TcmUri.IsValid(targetUriString))
             {
-                throw new TemplatingException(string.Format("Could not process href value '{0}' into uri", tridionHrefValue));
+                throw new Exception(string.Format("Could not process href value '{0}' into uri", tridionHrefValue));
             }
             linkInfo.TargetUri = new TcmUri(targetUriString);
             if (linkInfo.TargetUri.ItemType == ItemType.Page)
@@ -759,6 +871,11 @@ namespace Example.Ecl.TBBs
                 linkInfo.Anchor = "false";
             }
 
+            if (tridionAttributes.ContainsKey(AttributeNameTridionVariantid))
+            {
+                linkInfo.VariantId = tridionAttributes[AttributeNameTridionVariantid];
+            }
+
             return linkInfo;
         }
 
@@ -772,47 +889,55 @@ namespace Example.Ecl.TBBs
             ParsedLinkInfo linkInfo = new ParsedLinkInfo();
             StringBuilder sb = new StringBuilder();
             XmlAttributeCollection linkAttributeNodes = linkNode.Attributes;
-            IList<XmlAttribute> linkAttributes = linkAttributeNodes.Cast<XmlAttribute>().ToList();
-
-            foreach (XmlAttribute linkAttribute in linkAttributes)
+            if (linkAttributeNodes != null)
             {
-                if (linkAttribute.NamespaceURI == TemplateUtilities.TridionNamespace)
+                IList<XmlAttribute> linkAttributes = linkAttributeNodes.Cast<XmlAttribute>().ToList();
+
+                linkInfo.LinkElementName = linkNode.LocalName;
+
+                foreach (XmlAttribute linkAttribute in linkAttributes)
                 {
-                    // Remove attribute from original node
-                    linkAttributeNodes.Remove(linkAttribute);
-
-                    // So what attribute is it?
-                    string attName = linkAttribute.LocalName;
-                    string value = linkAttribute.Value;
-                    switch (attName)
+                    if (linkAttribute.NamespaceURI == TemplateUtilities.TridionNamespace)
                     {
-                        case AttributeNameTridionType:
-                            linkInfo.LinkType = value;
-                            break;
-                        case AttributeNameTridionHref:
-                            {
-                                string targetUriString = ProcessExpression(value);
-                                if (!TcmUri.IsValid(targetUriString))
-                                {
-                                    throw new InvalidDataException(string.Format("Could not process href value '{0}' into uri", value));
-                                }
-                                linkInfo.TargetUri = new TcmUri(targetUriString);
+                        // Remove attribute from original node
+                        linkAttributeNodes.Remove(linkAttribute);
 
-                                if (linkInfo.TargetUri.ItemType == ItemType.Page)
+                        // So what attribute is it?
+                        string attName = linkAttribute.LocalName;
+                        string value = linkAttribute.Value;
+                        switch (attName)
+                        {
+                            case AttributeNameTridionType:
+                                linkInfo.LinkType = value;
+                                break;
+                            case AttributeNameTridionHref:
                                 {
-                                    linkInfo.LinkType = AttributeTridionTypePage;
+                                    string targetUriString = ProcessExpression(value);
+                                    if (!TcmUri.IsValid(targetUriString))
+                                    {
+                                        throw new InvalidDataException(string.Format("Could not process href value '{0}' into uri", value));
+                                    }
+                                    linkInfo.TargetUri = new TcmUri(targetUriString);
+
+                                    if (linkInfo.TargetUri.ItemType == ItemType.Page)
+                                    {
+                                        linkInfo.LinkType = AttributeTridionTypePage;
+                                    }
                                 }
-                            }
-                            break;
-                        case AttributeNameTargetAttribute:
-                            linkInfo.TargetAttribute = value;
-                            break;
-                        case AttributeNameTridionAnchor:
-                            linkInfo.Anchor = value;
-                            break;
-                        default:
-                            sb.Append(string.Format("{0}=\"{1}\" ", attName, value));
-                            break;
+                                break;
+                            case AttributeNameTargetAttribute:
+                                linkInfo.TargetAttribute = value;
+                                break;
+                            case AttributeNameTridionAnchor:
+                                linkInfo.Anchor = value;
+                                break;
+                            case AttributeNameTridionVariantid:
+                                linkInfo.VariantId = value;
+                                break;
+                            default:
+                                sb.Append(string.Format("{0}=\"{1}\" ", attName, value));
+                                break;
+                        }
                     }
                 }
             }
@@ -880,6 +1005,18 @@ namespace Example.Ecl.TBBs
         }
 
         /// <summary>
+        /// In order to improve performance we use FileStream so while publishing, the TBB will create files in Temp folder of current process user.
+        /// This files exists only while publishing and will be deleted automatically.
+        /// </summary>
+        /// <returns>A temporary FileStream</returns>
+        private static Stream CreateTemporaryFileStream()
+        {
+            string path = Path.Combine(Path.GetTempPath(), "Tridion.SeekableStream." + Guid.NewGuid() + ".bin");
+            Stream stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 1024, FileOptions.DeleteOnClose);
+            return stream;
+        }
+
+        /// <summary>
         /// Simple structure for data-sharing between the methods in this class
         /// </summary>
         private class ParsedLinkInfo
@@ -892,12 +1029,14 @@ namespace Example.Ecl.TBBs
                 Anchor = string.Empty;
             }
             // Shared
+            public string LinkElementName;
             public string LinkType;
             public string RemainingAttributes;
             // For TCDL
             public TcmUri TargetUri;
             public string Anchor;
             public string TargetAttribute;
+            public string VariantId;
         }
     }
 }
