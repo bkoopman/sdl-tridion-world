@@ -110,7 +110,7 @@ ViewInStagingAndLive.UI.Editor.Commands.ViewLive.prototype._execute = function V
                 };
 
                 // open new tab and keep focus (url is set after publication and page are loaded)
-                p.tab = window.open("", "_newtab.live");
+                p.tab = window.open("", "live");
                 window.focus();
             }
 

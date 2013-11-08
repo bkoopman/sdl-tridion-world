@@ -98,7 +98,7 @@ ViewInStagingAndLive.UI.Editor.Commands.ViewStaging.prototype._execute = functio
             };
 
             // open new tab and keep focus (url is set after publication and page are loaded)
-            p.tab = window.open("", "_newtab.staging");
+            p.tab = window.open("", "staging");
             window.focus();
         }
 
