@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TridionTreeView.ascx.cs" Inherits="SDLTridion.Examples.ItemSelector.UserControls.TridionTreeView" %>
-<asp:TreeView ID="EmbeddedTreeView" runat="server" NodeIndent="16" PopulateNodesFromClient="true" 
-    OnTreeNodePopulate="PopulateNode" ExpandDepth="FullyExpand">
+<asp:TreeView ID="EmbeddedTreeView" runat="server" NodeIndent="16" PopulateNodesFromClient="true" OnTreeNodePopulate="PopulateNode" ExpandDepth="FullyExpand" SkipLinkText="">
     <ParentNodeStyle Font-Bold="False" />
     <HoverNodeStyle Font-Underline="False" />
     <SelectedNodeStyle Font-Underline="False" HorizontalPadding="4px" VerticalPadding="0px" />
