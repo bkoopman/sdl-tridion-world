@@ -59,6 +59,10 @@
     <Content Include="Scripts\Commands\ViewStaging.js" />
     <Content Include="Scripts\Constants.js" />
     <Content Include="Scripts\Utils.js" />
+    <Content Include="Themes\Carbon2\carbon2.css" />
+    <Content Include="Themes\Carbon2\Icons\live.16x16.png" />
+    <Content Include="Themes\Carbon2\Icons\live.32x32.png" />
+    <Content Include="Themes\Carbon2\Icons\staging.16x16.png" />
     <Content Include="Themes\Icons\live.16x16.png" />
     <Content Include="Themes\Icons\staging.16x16.png" />
     <Content Include="Themes\Icons\live.32x32.png" />
