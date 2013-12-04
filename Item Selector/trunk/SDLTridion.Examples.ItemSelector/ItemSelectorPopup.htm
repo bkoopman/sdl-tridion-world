@@ -1,22 +1,23 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Item Selector popup</title>
     <!-- mandatory script for implementing a Custom URL page -->
-    <script type="text/javascript" language="javascript" src="js/PopupInit.js"></script>
-    <script type="text/javascript" language="javascript" src="js/PopupFunctions.js"></script>
+    <script src="js/PopupInit.js"></script>
+    <script src="js/PopupFunctions.js"></script>
     <style type="text/css">
-        html, body, iframe  
+        html, body, iframe
         {
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
+            margin: 0;
+            padding: 0;
+            height: 100%;
         }
-        iframe 
-        { 
-            display: block; 
-            width: 100%; 
-            border: none; 
+
+        iframe
+        {
+            display: block;
+            width: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -26,6 +27,6 @@
     <!-- for example: http://website.url/ItemSelectorPopup.htm?start=tcm:0-2-1&types=1112&idonly -->
     <!-- if "start" is not set, tree will start from the publication id of the item from where the custom url is called -->
     <!-- configure SDL Tridion URL and CoreService URL in Web.config -->
-    <iframe id="selectorframe" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>
+    <iframe id="selectorframe"></iframe>
 </body>
 </html>

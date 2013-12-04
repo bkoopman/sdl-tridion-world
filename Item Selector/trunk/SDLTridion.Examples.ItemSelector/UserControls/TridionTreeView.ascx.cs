@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
@@ -15,9 +16,13 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
     {
         #region Constants
         // 2011 SP1 CME paths
-        const string IconPath = "/WebUI/Editors/CME/Themes/Carbon/icon_v6.1.0.55920.1_.png";
-        const string CollapseImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreeMinus1_v6.1.0.55920.1_.png";
-        const string ExpandImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreePlus1_v6.1.0.55920.1_.png";
+        //const string IconPath = "/WebUI/Editors/CME/Themes/Carbon/icon_v6.1.0.55920.1_.png";
+        //const string CollapseImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreeMinus1_v6.1.0.55920.1_.png";
+        //const string ExpandImage = "/WebUI/Editors/CME/Themes/Carbon/Images/Controls/Tree/TreePlus1_v6.1.0.55920.1_.png";
+        // 2013 SP1 CME paths
+        const string IconPath = "/WebUI/Editors/CME/Themes/Carbon2/icon_v7.1.0.66.8_.png";
+        const string CollapseImage = "/WebUI/Editors/CME/Themes/Carbon2/Images/Controls/Tree/TreeMinus1_v7.1.0.66.8_.png";
+        const string ExpandImage = "/WebUI/Editors/CME/Themes/Carbon2/Images/Controls/Tree/TreePlus1_v7.1.0.66.8_.png";
 
         #endregion
 
@@ -103,7 +108,7 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
                         }
                         break;
                     case ItemType.Folder:
-                        XElement items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData { Recursive = false });
+                        XElement items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData() { Recursive = false });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.WorkItem: // fake type id, representing the categories & keywords node!
@@ -111,16 +116,18 @@ namespace SDLTridion.Examples.ItemSelector.UserControls
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.StructureGroup:
-                        items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData { Recursive = false });
+                        items = _client.GetListXml(uri.ToString(), new OrganizationalItemItemsFilterData() { Recursive = false });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.Category:
-                        items = _client.GetListXml(uri.ToString(), new KeywordsFilterData { IsRoot = true });
+                        items = _client.GetListXml(uri.ToString(), new KeywordsFilterData() { IsRoot = true });
                         doc.Load(items.CreateReader());
                         break;
                     case ItemType.Keyword:
                         items = _client.GetListXml(uri.ToString(), new ChildKeywordsFilterData());
                         doc.Load(items.CreateReader());
+                        break;
+                    default:
                         break;
                 }
             }
