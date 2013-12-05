@@ -2,7 +2,7 @@
 
 = Introduction =
 
-SDL tridion 2013 SP1 adds a new Core Service command, this extension shows how that can be called directly from a UI extension.
+SDL Tridion 2013 SP1 adds a new Core Service command, this extension shows how that can be called directly from a UI extension.
 
 = Details =
 
