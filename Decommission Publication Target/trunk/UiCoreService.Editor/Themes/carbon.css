@@ -1,0 +1,9 @@
+﻿.ribbontoolbar .button.Decommission .image
+{
+    background-image: url({ThemePath}Icons/decommission.32x32.png);
+}
+.ribbontoolbar.minimized .button.Decommission .image, 
+.contextmenu .item.Decommission .image
+{
+    background-image: url({ThemePath}Icons/decommission.16x16.png);
+}

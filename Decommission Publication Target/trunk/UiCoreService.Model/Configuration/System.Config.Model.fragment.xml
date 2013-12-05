@@ -1,0 +1,8 @@
+﻿<!-- This configuration fragment is intended to be inserted into
+     the Tridion.Web.UI system configuration (This is the Model registration fragment)
+     This fragment should be placed inside the "/configuration/models" element -->
+<model name="UiCoreService">
+  <installpath>C:\Tridion\web\WebUI\Models\UiCoreService\</installpath>
+  <configuration>Configuration\UiCoreServiceModel.config</configuration>
+  <vdir>UiCoreService</vdir>
+</model>
