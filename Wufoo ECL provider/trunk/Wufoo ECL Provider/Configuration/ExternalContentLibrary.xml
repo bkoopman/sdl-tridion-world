@@ -1,0 +1,18 @@
+﻿<Configuration xmlns="http://www.sdltridion.com/ExternalContentLibrary/Configuration">
+    <!-- Available logging levels: Debug, Info, Warning, Error -->
+    <l:Logging Level="Warning" xmlns:l="http://www.sdltridion.com/Infrastructure/LoggingConfiguration">
+        <!-- Additional supported attributes: Language="rfc1766 code" Locale="rfc1766 code". An example of an rfc1766 code is "de-DE" for German. /-->
+        <!-- <l:Folder>Full path to logging folder, default is %TRIDION%/bin/log</l:Folder>-->
+    </l:Logging>
+    <CoreServiceUrl>net.tcp://localhost:2660/CoreService/2011/netTcp</CoreServiceUrl>
+    <MountPoints>
+        <MountPoint type="WufooProvider" version="*" id="wufoo" rootItemName="Wufoo">
+            <StubFolders>
+                <StubFolder id="tcm:2-254-2" />
+            </StubFolders>
+            <PrivilegedUserName>Domain\TridionAdminUser</PrivilegedUserName>
+            <WufooApiKey xmlns="http://wufoo.com/api">Your Wufoo API key, see http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Wufoo-REST-API-V3#Findingthekey </WufooApiKey>
+            <WufooUser xmlns="http://wufoo.com/api">Your Wufoo username.</WufooUser>
+		</MountPoint>
+    </MountPoints>
+</Configuration>

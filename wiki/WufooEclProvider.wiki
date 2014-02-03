@@ -1,0 +1,12 @@
+#summary Example ECL Provider making Wufoo forms available directly inside SDL Tridion.
+
+= Introduction =
+
+Example ECL Provider making Wufoo forms available directly inside SDL Tridion. This has been build for SDL Tridion 2013 SP1 using the External Content Library APIs. 
+
+The code is released as an open source example under the Reciprocal Public License (RPL). This allows for free usage and further development.
+
+
+= Details =
+
+Requires a Wufoo account and API key, see http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Wufoo-REST-API-V3#Findingthekey for details.
