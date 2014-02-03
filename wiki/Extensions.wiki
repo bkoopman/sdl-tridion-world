@@ -1,4 +1,3 @@
-
 #summary Open source eXtensions for SDL Tridion.
 
 = Introduction =
