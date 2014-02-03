@@ -1,3 +1,4 @@
+
 #summary Open source eXtensions for SDL Tridion.
 
 = Introduction =
@@ -6,14 +7,12 @@ Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). The
 
 = Contents =
 
-  * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view
-  * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode
-  * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion
-  * [EclTbb] - Example ECL Template Building Blocks
-  * [EclImport] - 2013 UI extension which adds import capabilities for ECL items
-<<<<<<< .mine
-  * [ViewInStagingAndLive] - 2013 UI extension allowing you to view any Page in the CMS on the Staging and Live website directly by the click of a button.
-  * [WufooEclProvider] - Example ECL Provider making Wufoo forms available directly inside SDL Tridion=======
+  * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view.
+  * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode.
+  * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
+  * [EclTbb] - Example ECL Template Building Blocks.
+  * [EclImport] - 2013 UI extension which adds import capabilities for ECL items.
   * [ViewInStagingAndLive] - 2013 UI extension allowing you to view any Page in the CMS on the Staging and Live website directly by the click of a button.
   * [PublishFromPublishingQueue] - 2013 UI extension adding republish buttons to the Publishing Queue, allowing for quick and easy republish of failed transaction directly from the queue.
-  * [DecommissionPublicationTarget] - 2013 SP1 example UI extension to call a Core Service command from a UI extension (like calling the Decommission Publication Target method directly from a Context Menu).>>>>>>> .r76
+  * [DecommissionPublicationTarget] - 2013 SP1 example UI extension to call a Core Service command from a UI extension (like calling the Decommission Publication Target method directly from a Context Menu).
+  * [WufooEclProvider] - Example ECL Provider making Wufoo forms available directly inside SDL Tridion. 
