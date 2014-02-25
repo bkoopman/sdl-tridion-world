@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using Example.EclProvider.Api;
+using Example.EclProvider.Extensions;
 using Tridion.ExternalContentLibrary.V2;
 
 namespace Example.EclProvider
@@ -154,6 +156,13 @@ namespace Example.EclProvider
 
         public string Dispatch(string command, string payloadVersion, string payload, out string responseVersion)
         {
+            responseVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+            if (payloadVersion.EqualsIgnoringRevision(responseVersion) && command.Equals("GetConfigurationXmlElement"))
+            {
+                return Provider.ConfigurationXmlElement;
+            }
+
             throw new NotSupportedException();
         }
 
