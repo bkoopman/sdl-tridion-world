@@ -41,5 +41,25 @@ namespace Example.EclProvider.Extensions
 
             return DateTime.ParseExact(timestamp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
         }
+
+        /// <summary>
+        /// Determines whether this version string and a specified version string have the same major, minor and build numbers.
+        /// </summary>
+        /// <param name="instance">This version string instance.</param>
+        /// <param name="version">The version string to compare to this instance.</param>
+        /// <returns>true if the value of the version parameter has the same major, minor and build numbers as this version string, false otherwise.</returns>
+        public static bool EqualsIgnoringRevision(this string instance, string version)
+        {
+            try
+            {
+                Version v1 = Version.Parse(instance);
+                Version v2 = Version.Parse(version);
+                return v1.Major == v2.Major && v1.Minor == v2.Minor && v1.Build == v2.Build;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

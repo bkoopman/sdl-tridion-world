@@ -18,6 +18,7 @@ namespace Example.EclProvider
         internal static string MountPointId { get; private set; }
         internal static Flickr Flickr { get; private set; }
         internal static IHostServices HostServices { get; private set; }
+        internal static string ConfigurationXmlElement { get; private set; }
 
         // This should probably be more generally available - maybe as an extension to IContentLibraryContext in addinbase?
         internal static string AddInFolder
@@ -42,6 +43,7 @@ namespace Example.EclProvider
         {
             MountPointId = mountPointId;
             HostServices = hostServices;
+            ConfigurationXmlElement = configurationXmlElement;
             
             // read ExtenalContentLibrary.xml for this mountpoint
             XElement config = XElement.Parse(configurationXmlElement);
