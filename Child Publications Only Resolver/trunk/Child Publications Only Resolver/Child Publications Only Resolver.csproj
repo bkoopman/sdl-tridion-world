@@ -42,27 +42,27 @@
     <Reference Include="System.Xml" />
     <Reference Include="Tridion.Common, Version=7.0.0.142, Culture=neutral, PublicKeyToken=349a39f202fa9b53, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Common.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager, Version=7.0.0.2303, Culture=neutral, PublicKeyToken=360aac4d3354074b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager.Common, Version=7.0.0.2303, Culture=neutral, PublicKeyToken=ddfc895746e5ee6b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Common.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager.Publishing, Version=7.0.0.2303, Culture=neutral, PublicKeyToken=360aac4d3354074b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Publishing.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Publishing.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.Logging, Version=7.0.0.142, Culture=neutral, PublicKeyToken=ddfc895746e5ee6b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Logging.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Logging.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
