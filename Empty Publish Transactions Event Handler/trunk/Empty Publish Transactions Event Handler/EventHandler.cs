@@ -1,7 +1,5 @@
-﻿using System.Configuration;
-using System.Xml;
+﻿using System.Xml;
 using Tridion;
-using Tridion.ContentManager;
 using Tridion.ContentManager.Extensibility;
 using Tridion.ContentManager.Extensibility.Events;
 using Tridion.ContentManager.Publishing;
@@ -25,35 +23,15 @@ namespace Example
         private const string Message = "This Publish Transaction contains 0 (zero) items.";
 
         /// <summary>
-        /// Child Publications Only Resolver Config filename
-        /// </summary>
-        private const string ConfigFile = "ChildPublicationsOnlyResolver.config";
-
-        /// <summary>
-        /// Website Structure Publication TCMURI in config file
-        /// </summary>
-        private const string WebsiteStructurePublicationFieldName = "WebsiteStructurePublication";
-
-        private readonly TcmUri _websiteStructurePublicationUri;
-
-        /// <summary>
         /// Subscribe to PublishTransaction Save (Initiated) event 
         /// </summary>
         public EventHandler()
         {
-            _websiteStructurePublicationUri = GetWebsiteStructurePublicationUri();
-
             EventSystem.Subscribe<PublishTransaction, SaveEventArgs>(PublishTransactionSaveAction, EventPhases.Initiated);
         }
 
         private void PublishTransactionSaveAction(PublishTransaction subject, SaveEventArgs args, EventPhases phases)
         {
-            // ignore items in website structure publication (they are always empty because of the child publications only resolver)
-            if (subject.PublishContexts[0].Publication.Id.ItemId == _websiteStructurePublicationUri.ItemId)
-            {
-                return;
-            }
-
             // after the publisher has used the Resolve Engine to figure out what to publish/render or unpublish, 
             // it reflects the resolved results in PublishTransaction.PublishContexts[0].ProcessedItems
             // currently there will always be exactly one PublishContext per PublishTransaction
@@ -66,27 +44,6 @@ namespace Example
                 delta.LoadXml(string.Format(DeltaXml, Constants.TcmR6Namespace, subject.Id, Message, PublishTransactionState.Warning));
                 subject.Update(delta.DocumentElement);
             }
-        }
-
-        /// <summary>
-        /// read website structure publication uri from config file (located in ..\Tridion\config\ directory)
-        /// </summary>
-        /// <returns>website structure publication uri</returns>
-        private static TcmUri GetWebsiteStructurePublicationUri()
-        {
-            // read website structure publication uri from config file (located in ..\Tridion\config\ directory)
-            string configPath = Tridion.ContentManager.ConfigurationSettings.GetTcmHomeDirectory();
-            if (configPath.EndsWith("\\"))
-            {
-                configPath += "config\\";
-            }
-            else
-            {
-                configPath += "\\config\\";
-            }
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap { ExeConfigFilename = configPath + ConfigFile };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            return new TcmUri(config.AppSettings.Settings[WebsiteStructurePublicationFieldName].Value);
         }
     }
 }
