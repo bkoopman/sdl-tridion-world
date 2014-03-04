@@ -46,19 +46,19 @@
     <Reference Include="System.XML" />
     <Reference Include="Tridion.Common, Version=7.1.0.52, Culture=neutral, PublicKeyToken=349a39f202fa9b53, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Common.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager">
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager.Common">
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Common.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tridion.ContentManager.Publishing">
-      <HintPath>..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Publishing.dll</HintPath>
+      <HintPath>..\..\..\..\_References\SDL Tridion 2013 SP1\Tridion.ContentManager.Publishing.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
