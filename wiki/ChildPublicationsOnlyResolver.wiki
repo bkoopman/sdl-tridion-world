@@ -8,4 +8,4 @@ This will allow you to publish an entire BluePrint tree and this custom resolver
 
 = Details =
 
-ToDo...
+All is explained on SDL Tridion World - http://www.sdltridionworld.com/community/2011_extensions/childpublicationsonlyresolver.aspx
