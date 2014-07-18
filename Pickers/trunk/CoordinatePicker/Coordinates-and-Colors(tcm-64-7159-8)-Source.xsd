@@ -1,0 +1,67 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://createandbreak.net/schema/coordinatesandcolors" xmlns:tcmi="http://www.tridion.com/ContentManager/5.0/Instance" elementFormDefault="qualified" targetNamespace="http://createandbreak.net/schema/coordinatesandcolors">
+  <xsd:import namespace="http://www.tridion.com/ContentManager/5.0/Instance" schemaLocation="cm_xml_inst.xsd"></xsd:import>
+  <xsd:annotation>
+    <xsd:appinfo>
+      <tcm:Labels xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
+        <tcm:Label ElementName="image" Metadata="false">image (to place X &amp; Y coordinates on)</tcm:Label>
+        <tcm:Label ElementName="X" Metadata="false">X (percent of width, click to open coordinate picker)</tcm:Label>
+        <tcm:Label ElementName="Y" Metadata="false">Y (percent of height)</tcm:Label>
+        <tcm:Label ElementName="color" Metadata="false">Color Picker Example (click to open color picker)</tcm:Label>
+      </tcm:Labels>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element name="Content">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="image" minOccurs="0" maxOccurs="1" type="tcmi:SimpleLink">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/CustomUrls/CoordinatePicker/CoordinatePicker.html</tcm:CustomURL>
+              <tcm:ExtensionXml xmlns:tcm="http://www.tridion.com/ContentManager/5.0"></tcm:ExtensionXml>
+              <tcm:linktype xmlns:tcm="http://www.tridion.com/ContentManager/5.0">MultimediaLink</tcm:linktype>
+              <tcm:AllowedTargetSchemas xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
+                <tcm:TargetSchema xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="tcm:64-13-8" xlink:title="Image / Download"></tcm:TargetSchema>
+              </tcm:AllowedTargetSchemas>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="X" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:ExtensionXml xmlns:tcm="http://www.tridion.com/ContentManager/5.0"></tcm:ExtensionXml>
+            </xsd:appinfo>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:minInclusive value="0"></xsd:minInclusive>
+              <xsd:maxInclusive value="100"></xsd:maxInclusive>
+              <xsd:fractionDigits value="1"></xsd:fractionDigits>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="Y" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:ExtensionXml xmlns:tcm="http://www.tridion.com/ContentManager/5.0"></tcm:ExtensionXml>
+            </xsd:appinfo>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:minInclusive value="0"></xsd:minInclusive>
+              <xsd:maxInclusive value="100"></xsd:maxInclusive>
+              <xsd:fractionDigits value="1"></xsd:fractionDigits>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="color" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/CustomUrls/ColorPicker/ColorPicker.html</tcm:CustomURL>
+              <tcm:ExtensionXml xmlns:tcm="http://www.tridion.com/ContentManager/5.0"></tcm:ExtensionXml>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
