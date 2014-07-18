@@ -6,11 +6,15 @@ Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). The
 
 = Contents =
 
-  * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view.
+  * Custom URLs create pop-ups that extend the Component Form view
+    * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view.
+    * [http://www.tridiondeveloper.com/sdl-tridion-custom-url-color-picker Color Picker]
+    * [http://www.tridiondeveloper.com/custom-url-coordinate-picker Coordinate Picker] - Custom URL for selecting X & Y coordinates by clicking on an image.
   * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode.
-  * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
-  * [EclTbb] - Example ECL Template Building Blocks.
-  * [EclImport] - 2013 UI extension which adds import capabilities for ECL items.
+  * External Content Library (ECL) lets Tridion authors use multimedia from other systems from within the Content Manager and Experience Manager interfaces
+    * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
+    * [EclTbb] - Example ECL Template Building Blocks.
+    * [EclImport] - 2013 UI extension which adds import capabilities for ECL items.
   * [ViewInStagingAndLive] - 2013 UI extension allowing you to view any Page in the CMS on the Staging and Live website directly by the click of a button.
   * [PublishFromPublishingQueue] - 2013 UI extension adding republish buttons to the Publishing Queue, allowing for quick and easy republish of failed transaction directly from the queue.
   * [DecommissionPublicationTarget] - 2013 SP1 example UI extension to call a Core Service command from a UI extension (like calling the Decommission Publication Target method directly from a Context Menu).
