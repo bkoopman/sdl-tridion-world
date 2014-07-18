@@ -1,0 +1,12 @@
+#image {
+border: 1px solid #dfdfdf;
+}
+
+.logo {
+padding: 0.25em;
+float: right;
+}
+
+body {
+background: #f3ece2;
+}
