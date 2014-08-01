@@ -10,6 +10,7 @@ Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). The
     * [ItemSelector] - Custom URL for selecting an item URI from a SDL Tridion tree view.
     * [http://www.tridiondeveloper.com/sdl-tridion-custom-url-color-picker Color Picker] - Custom URL for choosing a HEX color from a pop-up.
     * [http://www.tridiondeveloper.com/custom-url-coordinate-picker Coordinate Picker] - Custom URL for selecting X & Y coordinates by clicking on an image.
+  * Custom URL to edit Global AppData and AppData on a Schema (more details yet to come, but the source might already be self explanatory ;o).
   * [XHTMLtoBBCode] - DWT Template function source for converting RTF XHTML into BBCode.
   * External Content Library (ECL) lets Tridion authors use multimedia from other systems from within the Content Manager and Experience Manager interfaces
     * [FlickrEclProvider] - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
