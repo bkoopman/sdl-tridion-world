@@ -1,0 +1,209 @@
+﻿body
+{
+    font-family: Verdana;
+    font-size: 11px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+table
+{
+    width: 100%;
+    border: none;
+    border-top: 1px solid #8a9199;
+    border-collapse: collapse;
+    padding: 0;
+}
+
+th
+{
+    border: none;
+    border-bottom: 1px solid #8a9199;
+    border-left: 1px solid #8a9199;
+    border-collapse: collapse;
+    padding: 3px 7px 2px 7px;
+    background: #ededed;
+    color: #41464c;
+    font-weight: normal;
+    text-align: left;
+}
+
+    th:first-child
+    {
+        border-left: none;
+    }
+
+td
+{
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    border-collapse: collapse;
+    padding: 3px 7px 2px 7px;
+}
+
+table.nolines, table.nolines th, table.nolines td
+{
+    border: none;
+    border-top: none;
+    border-left: none;
+}
+
+table.nolines
+{
+    border-top: 1px solid #8a9199;
+}
+
+.control
+{
+    filter: none;
+    border-style: none;
+    background: linear-gradient(to bottom,#f8f8f8 0,#ededed 100%) repeat scroll 0 0 transparent;
+    padding: 0;
+    padding-top: 2px;
+}
+
+.tridion.button.refresh
+{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+}
+
+.flisttopbar
+{
+    height: 19px;
+    padding: 3px;
+    padding-top: 2px;
+    color: #222E39;
+}
+
+    .flisttopbar .location
+    {
+        padding-left: 5px;
+    }
+
+        .flisttopbar .location .label
+        {
+            float: left;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-top: 3px;
+        }
+
+        .flisttopbar .location .button:focus
+        {
+            outline-width: thin;
+            outline-style: dotted;
+            outline-color: #212326;
+        }
+
+        .flisttopbar .location .button.mouseover,
+        .flisttopbar .location .button.mousedown
+        {
+            border: 0;
+        }
+
+        .flisttopbar .location .button.refresh
+        {
+            float: left;
+            width: 14px;
+            min-width: 14px;
+            height: 12px;
+            min-height: 12px;
+            background-repeat: no-repeat;
+            background-image: url("Images/cme_Sprites.14px.png");
+            background-position: 0 -14px;
+            margin-top: 4px;
+        }
+
+            .flisttopbar .location .button.refresh:hover
+            {
+                background-repeat: no-repeat;
+                background-image: url("Images/cme_Sprites.14px.png");
+                background-position: 0 -26px;
+            }
+
+.width30
+{
+    width: 30%;
+}
+
+.width98
+{
+    width: 98%;
+}
+
+.button
+{
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Arial;
+    color: #262c39;
+    text-shadow: 1px 1px #fff;
+    margin: 2px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    min-width: 72px;
+    min-height: 19px;
+    text-align: center;
+    background-color: #e2e2e2;
+}
+
+    .button:hover
+    {
+        background-color: #f4f4f4;
+    }
+
+.aspNetDisabled.button
+{
+    opacity: .6;
+}
+
+    .aspNetDisabled.button:hover
+    {
+        background-color: #e2e2e2;
+    }
+
+.warning
+{
+    color: #fff;
+    background-color: #e52b00;
+    padding: 2px;
+    margin: 2px;
+    border: solid 1px #931600;
+    line-height: 20px;
+}
+
+input, textarea
+{
+    font-family: Verdana;
+    font-size: 11px;
+}
+
+.status
+{
+    border-bottom: none; 
+    color: #999; 
+    text-align: center;
+}
+
+.status-line
+{
+    border-bottom: none; 
+}
+
+.noresult
+{
+    color: #999; 
+    text-align: center; 
+    letter-spacing: 2px;
+}
+
+.hidden 
+{
+    visibility: hidden;    
+}
