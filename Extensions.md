@@ -1,0 +1,22 @@
+# Introduction #
+
+Here you will find eXtensions for SDL Tridion (versions 2011 and up mostly). These eXtensions are released under the Reciprocal Public License (RPL) so that everybody can use, and help to further develop them.
+
+# Contents #
+
+  * Custom URLs create pop-ups that extend the Component Form view
+    * [ItemSelector](ItemSelector.md) - Custom URL for selecting an item URI from a SDL Tridion tree view.
+    * [Color Picker](http://www.tridiondeveloper.com/sdl-tridion-custom-url-color-picker) - Custom URL for choosing a HEX color from a pop-up.
+    * [Coordinate Picker](http://www.tridiondeveloper.com/custom-url-coordinate-picker) - Custom URL for selecting X & Y coordinates by clicking on an image.
+  * [Custom URL](https://code.google.com/p/sdl-tridion-world/source/browse/AppData%20Custom%20Page/trunk) to edit Global AppData and AppData on a Schema (more details yet to come, but the source might already be self explanatory ;o).
+  * [XHTMLtoBBCode](XHTMLtoBBCode.md) - DWT Template function source for converting RTF XHTML into BBCode.
+  * External Content Library (ECL) lets Tridion authors use multimedia from other systems from within the Content Manager and Experience Manager interfaces
+    * [FlickrEclProvider](FlickrEclProvider.md) - Example ECL Provider making photos from a configured Flickr photostream available directly inside SDL Tridion.
+    * [EclTbb](EclTbb.md) - Example ECL Template Building Blocks.
+    * [EclImport](EclImport.md) - 2013 UI extension which adds import capabilities for ECL items.
+  * [ViewInStagingAndLive](ViewInStagingAndLive.md) - 2013 UI extension allowing you to view any Page in the CMS on the Staging and Live website directly by the click of a button.
+  * [PublishFromPublishingQueue](PublishFromPublishingQueue.md) - 2013 UI extension adding republish buttons to the Publishing Queue, allowing for quick and easy republish of failed transaction directly from the queue.
+  * [DecommissionPublicationTarget](DecommissionPublicationTarget.md) - 2013 SP1 example UI extension to call a Core Service command from a UI extension (like calling the Decommission Publication Target method directly from a Context Menu).
+  * [WufooEclProvider](WufooEclProvider.md) - Example ECL Provider making Wufoo forms available directly inside SDL Tridion.
+  * [ChildPublicationsOnlyResolver](ChildPublicationsOnlyResolver.md) - Custom Resolver for publishing child Publications only.
+  * [EmptyPublishTransactionsEventHandler](EmptyPublishTransactionsEventHandler.md) - Event Handler that changes the state of Success from an empty Publish Transaction to Warning.

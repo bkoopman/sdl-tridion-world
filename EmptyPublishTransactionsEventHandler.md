@@ -1,0 +1,8 @@
+# Introduction #
+
+This Event Handler changes the state of an empty Publish Transaction from the default Success to Warning, so you directly get an indication in the Publish Queue that something special occurred.
+
+
+# Details #
+
+All is explained on SDL Tridion World - http://www.sdltridionworld.com/community/2011_extensions/emptypublishtransactionseventhandler.aspx

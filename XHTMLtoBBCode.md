@@ -1,0 +1,7 @@
+# Introduction #
+
+Contains functions which render a `ComponentField` using the `BuiltInFunctions.RenderComponentField(string, int)` function and converts that to the by Netbiscuits required BBCode for BiscuitML output.
+
+# Version #
+
+This functions source is created and tested on SDL Tridion 2011 (including HR1). As it is using the Modular Templating model, it should work from versions `R5.3` and up.

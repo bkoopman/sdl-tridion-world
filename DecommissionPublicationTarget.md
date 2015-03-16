@@ -1,0 +1,7 @@
+# Introduction #
+
+SDL Tridion 2013 SP1 adds a new Core Service command, this extension shows how that can be called directly from a UI extension.
+
+# Details #
+
+All is explained in this blogpost on tridiondeveloper.com - http://www.tridiondeveloper.com/decommission-a-publication-targ
