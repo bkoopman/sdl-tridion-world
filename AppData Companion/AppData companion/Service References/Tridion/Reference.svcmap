@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0a3ad16a-3769-4a7a-bf08-5f7f89ea2d47" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://train1/webservices/CoreService2011.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CoreService2011.xsd" MetadataType="Schema" ID="a4be447c-34b5-4a3d-a010-c77dbd091b8b" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd3" />
+    <MetadataFile FileName="CoreService20111.xsd" MetadataType="Schema" ID="955fc4f8-9172-4181-b0f4-2da190703b7b" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd2" />
+    <MetadataFile FileName="CoreService20112.xsd" MetadataType="Schema" ID="74e0b05f-9b53-4c5f-b509-640803335018" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd5" />
+    <MetadataFile FileName="CoreService20113.xsd" MetadataType="Schema" ID="92edfb5a-9194-4829-ad46-90f5b06d0c04" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd4" />
+    <MetadataFile FileName="CoreService2011.wsdl" MetadataType="Wsdl" ID="f369a4fe-f8e6-4fb6-895e-ee23ae8300bb" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?wsdl" />
+    <MetadataFile FileName="CoreService20111.wsdl" MetadataType="Wsdl" ID="67689d4e-6074-453b-b398-9c6980248cd2" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="CoreService20114.xsd" MetadataType="Schema" ID="2394d889-dcca-4289-8275-145e904a5731" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd1" />
+    <MetadataFile FileName="CoreService20115.xsd" MetadataType="Schema" ID="e91c1b24-388a-4fb8-9c48-83e43bf784aa" SourceId="1" SourceUrl="http://train1/webservices/CoreService2011.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

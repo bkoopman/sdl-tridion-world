@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.sdltridion.com/Security" elementFormDefault="qualified" targetNamespace="http://www.sdltridion.com/Security" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://train1/webservices/CoreService2011.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfWindowsUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WindowsUser" nillable="true" type="tns:WindowsUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWindowsUser" nillable="true" type="tns:ArrayOfWindowsUser" />
+  <xs:complexType name="WindowsUser">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ExternalUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SID" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WindowsUser" nillable="true" type="tns:WindowsUser" />
+  <xs:complexType name="ExternalUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalUser" nillable="true" type="tns:ExternalUser" />
+  <xs:complexType name="ArrayOfDirectoryServiceUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DirectoryServiceUser" nillable="true" type="tns:DirectoryServiceUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDirectoryServiceUser" nillable="true" type="tns:ArrayOfDirectoryServiceUser" />
+  <xs:complexType name="DirectoryServiceUser">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ExternalUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalAttributes" nillable="true" type="tns:AdditionalAttributes">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DN" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DirectoryServiceUser" nillable="true" type="tns:DirectoryServiceUser" />
+  <xs:complexType name="AdditionalAttributes">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalAttribute">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" nillable="true" type="xs:string" />
+            <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="Values" nillable="true" type="q1:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalAttributes" nillable="true" type="tns:AdditionalAttributes" />
+  <xs:complexType name="DirectoryUsersFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SubtreeDN" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UserNameSearchMode" nillable="true" type="tns:UserNameSearchMode" />
+      <xs:element minOccurs="0" name="UserNameStartsWith" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectoryUsersFilter" nillable="true" type="tns:DirectoryUsersFilter" />
+  <xs:simpleType name="UserNameSearchMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UserNameOnly" />
+      <xs:enumeration value="FullNameOnly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserNameSearchMode" nillable="true" type="tns:UserNameSearchMode" />
+</xs:schema>

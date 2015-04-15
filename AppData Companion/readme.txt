@@ -1,0 +1,1 @@
+For SDL Tridion 2011 SP1 and later. See TridionWorld for the original SDL Tridion 2011 GA version of the AppData Companion.

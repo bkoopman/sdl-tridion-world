@@ -1,0 +1,7 @@
+C:\Users\areyes\Desktop\AppData companion_tcm89-19931\AppData companion - source\bin\Debug\AppData.exe.config
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\bin\Debug\AppData.exe.config
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\bin\Debug\AppData.exe
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\bin\Debug\AppData.pdb
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\obj\x86\Debug\AppData.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\obj\x86\Debug\AppData.exe
+C:\Users\Administrator\Documents\AppData companion_tcm89-19931\AppData companion (updated)\obj\x86\Debug\AppData.pdb
