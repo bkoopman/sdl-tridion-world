@@ -33,48 +33,45 @@ namespace Example.EclProvider
 
         public IContentResult GetContent(IList<ITemplateAttribute> attributes)
         {
-            // in case we want SDL Tridion to publish the item, we should return the content stream for this Flickr photo
-            //using (WebClient webClient = new WebClient())
-            //{
-            //    using (Stream stream = new MemoryStream(webClient.DownloadData(Info.Url)))
-            //    {
-            //        return Provider.HostServices.CreateContentResult(stream, stream.Length, MimeType);
-            //    }                
-            //}
-
-            // Flickr photos are already published, so we can return null here
-            return null;
-        }
-
-        public string GetDirectLinkToPublished(IList<ITemplateAttribute> attributes)
-        {
             // determine width from attributes
             string width = attributes.Attribute("width");
-            if (string.IsNullOrEmpty(width))
+            if (String.IsNullOrEmpty(width))
             {
                 string style = attributes.Attribute("style");
-                if (!string.IsNullOrEmpty(style) && style.Contains("width"))
+                if (!String.IsNullOrEmpty(style) && style.Contains("width"))
                 {
                     // style contains something like "width: 320px; height: 240px;"
-                    width = style.Split(';').Select(t => t.Trim()).First(t => t.StartsWith("width")).Split(':')[1].Replace("px", string.Empty);
+                    width = style.Split(';').Select(t => t.Trim()).First(t => t.StartsWith("width")).Split(':')[1].Replace("px", String.Empty);
                 }
             }
-            if (string.IsNullOrEmpty(width))
+            if (String.IsNullOrEmpty(width))
             {
                 width = Width.ToString();
             }
 
-            // Flickr photos are already published, so we can return their url (adjusted for the requested size)
-            return Flickr.GetPhotoUrl(Info, Convert.ToInt32(width));
+            // because we want SDL Tridion to publish the item, we will return the content stream for this Flickr photo
+            using (WebClient webClient = new WebClient())
+            {
+                // Flickr photo url adjusted for the requested size
+                string url = Flickr.GetPhotoUrl(Info, Convert.ToInt32(width));
+
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                
+                using (Stream stream = new MemoryStream(webClient.DownloadData(url)))
+                {
+                    return Provider.HostServices.CreateContentResult(stream, stream.Length, MimeType);
+                }
+            }
+        }
+
+        public string GetDirectLinkToPublished(IList<ITemplateAttribute> attributes)
+        {
+            return null;
         }
 
         public string GetTemplateFragment(IList<ITemplateAttribute> attributes)
         {
-            string[] supportedAttributeNames = new[] { "style", "width", "height" };
-            string supportedAttributes = attributes.SupportedAttributes(supportedAttributeNames);
-
-            // Flickr photos are already published, so we can provide a template fragment ourselves
-            return string.Format("<img src=\"{0}\" alt=\"{1}\" {2}/>", GetDirectLinkToPublished(attributes), Title, supportedAttributes);
+            return null;
         }
 
         public int? Height
