@@ -31,8 +31,8 @@ namespace Example.EclProvider.Api
     /// </example>
     public class Flickr
     {
-        private const string DefaultUrl = "http://api.flickr.com/services/rest/";
-        private const string PhotoPage = "http://www.flickr.com/photos/{0}/{1}/";
+        private const string DefaultUrl = "https://api.flickr.com/services/rest/";
+        private const string PhotoPage = "https://www.flickr.com/photos/{0}/{1}/";
 
         /// <summary>
         /// Publicly available maximum photo width in pixels.
