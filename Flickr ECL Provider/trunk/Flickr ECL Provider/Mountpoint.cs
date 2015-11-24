@@ -107,11 +107,15 @@ namespace Example.EclProvider
                 string[] ids = eclUri.ItemId.Split('_');
                 FlickrInfo photo = Provider.Flickr.GetPhotoInfo(ids[0], ids[1], ids[2]);
 
-                WebClient webClient = new WebClient();
-                byte[] thumbnailData = webClient.DownloadData(Flickr.GetPhotoUrl(photo, maxWidth));
-                using (MemoryStream ms = new MemoryStream(thumbnailData, false))
+                using (WebClient webClient = new WebClient())
                 {
-                    return Provider.HostServices.CreateThumbnailImage(maxWidth, maxHeight, ms, Flickr.MaxWidth, Flickr.MaxHeight, null);
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                    byte[] thumbnailData = webClient.DownloadData(Flickr.GetPhotoUrl(photo, maxWidth));
+                    using (MemoryStream ms = new MemoryStream(thumbnailData, false))
+                    {
+                        return Provider.HostServices.CreateThumbnailImage(maxWidth, maxHeight, ms, Flickr.MaxWidth, Flickr.MaxHeight, null);
+                    }
                 }
             }
             return null;

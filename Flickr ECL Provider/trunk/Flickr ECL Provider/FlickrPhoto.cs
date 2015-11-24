@@ -52,14 +52,13 @@ namespace Example.EclProvider
             // because we want SDL Tridion to publish the item, we will return the content stream for this Flickr photo
             using (WebClient webClient = new WebClient())
             {
-                // Flickr photo url adjusted for the requested size
-                string url = Flickr.GetPhotoUrl(Info, Convert.ToInt32(width));
-
                 ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                
-                using (Stream stream = new MemoryStream(webClient.DownloadData(url)))
+
+                // Flickr photo url adjusted for the requested size
+                byte[] photoData = webClient.DownloadData(Flickr.GetPhotoUrl(Info, Convert.ToInt32(width)));
+                using (MemoryStream ms = new MemoryStream(photoData, false))
                 {
-                    return Provider.HostServices.CreateContentResult(stream, stream.Length, MimeType);
+                    return Provider.HostServices.CreateContentResult(ms, ms.Length, MimeType);
                 }
             }
         }
