@@ -56,10 +56,10 @@ namespace Example.EclProvider
 
                 // Flickr photo url adjusted for the requested size
                 byte[] photoData = webClient.DownloadData(Flickr.GetPhotoUrl(Info, Convert.ToInt32(width)));
-                using (MemoryStream ms = new MemoryStream(photoData, false))
-                {
-                    return Provider.HostServices.CreateContentResult(ms, ms.Length, MimeType);
-                }
+                
+                // no using statement around stream, since that breaks the AddBinary call in the TBBs
+                MemoryStream ms = new MemoryStream(photoData, false);
+                return Provider.HostServices.CreateContentResult(ms, ms.Length, MimeType);
             }
         }
 
