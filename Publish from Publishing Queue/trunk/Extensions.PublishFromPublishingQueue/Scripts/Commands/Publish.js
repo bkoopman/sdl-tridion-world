@@ -91,12 +91,25 @@ Extensions.PublishFromPublishingQueue.PqPublish.prototype._onMultiPublish = func
         $messages.registerError(error.Message, null, null, true, false);
     };
 
-    tridion.Web.UI.ContentManager.Publishing.PublishItems(
-		items,
-		instruction,
-		PqPublish$_onMultiPublish$_onSendToQueue,
-		PqPublish$_onMultiPublish$_onSendToQueueFailed
-	);
+    try{
+        tridion.Web.UI.ContentManager.Publishing.PublishItems(
+            items,
+            instruction,
+            PqPublish$_onMultiPublish$_onSendToQueue,
+            PqPublish$_onMultiPublish$_onSendToQueueFailed
+        );
+    }
+    catch(err){
+        // We are dealing with Web 8
+        console.log('Web 8 detected, executing workaround');
+            tridion.Web.UI.Models.TCM.Publishing.PublishItems(
+            items,
+            instruction,
+            PqPublish$_onMultiPublish$_onSendToQueue,
+            PqPublish$_onMultiPublish$_onSendToQueueFailed
+        );
+
+    }
 };
 
 Extensions.PublishFromPublishingQueue.PqPublish.prototype._openPublishPopup = function PqPublish$_openPublishPopup(items) {

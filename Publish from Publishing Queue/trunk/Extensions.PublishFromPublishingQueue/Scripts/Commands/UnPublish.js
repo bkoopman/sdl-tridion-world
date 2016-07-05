@@ -62,12 +62,24 @@ Extensions.PublishFromPublishingQueue.PqUnPublish.prototype._onMultiUnpublish = 
         $messages.registerError($localization.getEditorResource("PublishPopupItemsSentToPublishQueueFailed"));
     };
 
-    tridion.Web.UI.ContentManager.Publishing.UnpublishItems(
-		items,
-		instruction,
-		PqUnPublish$_onMultiUnpublish$_onSendToQueue,
-		PqUnPublish$_onMultiUnpublish$_onSendToQueueFailed
-	);
+    try{
+        tridion.Web.UI.ContentManager.Publishing.UnpublishItems(
+            items,
+            instruction,
+            PqUnPublish$_onMultiUnpublish$_onSendToQueue,
+            PqUnPublish$_onMultiUnpublish$_onSendToQueueFailed
+        );
+    }
+    catch(err){
+        // We are dealing with Web 8
+        console.log('Web 8 detected, executing workaround');
+        tridion.Web.UI.Models.TCM.Publishing.UnpublishItems(
+            items,
+            instruction,
+            PqUnPublish$_onMultiUnpublish$_onSendToQueue,
+            PqUnPublish$_onMultiUnpublish$_onSendToQueueFailed
+        );
+    }
 };
 
 Extensions.PublishFromPublishingQueue.PqUnPublish.prototype._execute = function PqUnPublish$_execute(selection) {
