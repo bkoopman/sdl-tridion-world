@@ -4,34 +4,12 @@
 
 #cm_pq_publish.item .image
 {
-    /* 2011 icons 
-	background-image: url({ThemePath['CME']}/Sprites/cme_5_v6.0.0.39607.0_.png);
-	background-position: 0px -480px;
-    */
-    /* 2013 GA icons
-    background-image: url({ThemePath['CME']}/Sprites/cme_Sprites.16px_v7.0.0.568.23_.png);
-    background-position: 0 -1200px;
-    */
-    /* 2013 SP1 icons */
-    background-image: url({ThemePath['CME']}/Sprites/cme_Sprites.16px_v7.1.0.66.8_.png);
-    background-position: 0 -624px;
-    height: 16px;
-    width: 16px;
+	background-image: url('{ThemePath}Icons/publish.16px.png');
+	background-position: 0;
 }
 
 #cm_pq_unpublish.item .image
 {
-    /* 2011 icons 
-    background-image: url({ThemePath['CME']}/Sprites/cme_5_v6.0.0.39607.0_.png);
-	background-position: 0px -512px;
-    */
-    /* 2013 GA icons
-    background-image: url({ThemePath['CME']}/Sprites/cme_Sprites.16px_v7.0.0.568.23_.png);
-    background-position: 0px -1232px;
-    */
-    /* 2013 SP1 icons */
-    background-image: url({ThemePath['CME']}/Sprites/cme_Sprites.16px_v7.1.0.66.8_.png);
-    background-position: 0px -640px;
-    height: 16px;
-    width: 16px;
+	background-image: url('{ThemePath}Icons/unpublish.16px.png');
+	background-position: 0;
 }
