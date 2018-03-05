@@ -1,0 +1,71 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tcmi="http://www.tridion.com/ContentManager/5.0/Instance" xmlns="http://www.sdl.com/SdlTridion/Schema/ReiConfig" targetNamespace="http://www.sdl.com/SdlTridion/Schema/ReiConfig" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <tcm:Labels xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
+        <tcm:Label ElementName="schemaUri" Metadata="true">Component Schema</tcm:Label>
+        <tcm:Label ElementName="structureGroupUri" Metadata="true">Structure Group to create the Page in</tcm:Label>
+        <tcm:Label ElementName="pageTemplateUri" Metadata="true">Page Template</tcm:Label>
+        <tcm:Label ElementName="componentTemplateUri" Metadata="true">Component Template</tcm:Label>
+        <tcm:Label ElementName="indexPageUri" Metadata="true">Index Page</tcm:Label>
+        <tcm:Label ElementName="indexCtUri" Metadata="true">Index Component Template</tcm:Label>
+        <tcm:Label ElementName="targetTypeUri" Metadata="true">(staging) Target Type to publish the Pages to</tcm:Label>
+      </tcm:Labels>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:import namespace="http://www.tridion.com/ContentManager/5.0/Instance"></xsd:import>
+  <xsd:element name="Metadata">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="schemaUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=8</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="structureGroupUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=4</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="pageTemplateUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=128</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="componentTemplateUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=32</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="indexPageUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=64</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="indexCtUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:CustomURL xmlns:tcm="http://www.tridion.com/ContentManager/5.0">/Extensions/ItemSelector/ItemSelectorPopup.htm?types=32</tcm:CustomURL>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="targetTypeUri" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+          <xsd:annotation>
+            <xsd:appinfo>
+              <tcm:Size xmlns:tcm="http://www.tridion.com/ContentManager/5.0">1</tcm:Size>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
